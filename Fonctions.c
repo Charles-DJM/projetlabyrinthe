@@ -35,7 +35,7 @@ void Creer_Curseur(int *x, int *y)
  * si direction = 2 curseur déplacé vers la gauche
  *  direction = 3 curserur déplacé vers la droite
  *  direction = 4 curseur déplacé vers le haut */
-{/*
+/*{
 	set_drawing_color(color_WHITE);
 	draw_circle_full(x, y, 15); //efface  le curseur à sa position précédente
 
