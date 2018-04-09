@@ -6,7 +6,7 @@ int main (void)
 {
 int n ;
 n = Taille () ;
-int *x=30 , *y= (n*60)-30 ;
+int x=30 , y= (n*60)-30 ;
 start_graphics() ;
 
 Grille (n) ;
