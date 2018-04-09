@@ -29,13 +29,13 @@ void Creer_Curseur(int *x, int *y)
 	update_graphics () ;
 }
 
-void Deplacement (int direction, int *x, int *y)
+//void Deplacement (int direction, int *x, int *y)
 /* Déplacement du curseur en fonction de la variable direction. */
 /* si direction = 1  curseur déplacé vers le bas
  * si direction = 2 curseur déplacé vers la gauche
  *  direction = 3 curserur déplacé vers la droite
  *  direction = 4 curseur déplacé vers le haut */
-{
+{/*
 	set_drawing_color(color_WHITE);
 	draw_circle_full(x, y, 15); //efface  le curseur à sa position précédente
 
@@ -61,3 +61,4 @@ void Deplacement (int direction, int *x, int *y)
 	update_graphics () ;
 	return;
 }
+*/
