@@ -31,8 +31,8 @@ void Creer_Curseur (int *x, int *y)
 
 void Enregistrement (FILE *f)
 {int i, j ;
-for (i = 0, i < 100, i++)
-	{for (j = 0, j < 100, j++)
+for (i = 0 ; i < 100 ; i++)
+	{for (j = 0 ; j < 100 ; j++)
 		{putc(MUR[i][j], f) ;
 		}
 	}
