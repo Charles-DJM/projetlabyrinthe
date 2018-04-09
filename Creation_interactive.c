@@ -79,7 +79,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[100]
 }
 
 void Mouvement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[100][100])
-/**/
+/*Lance le mouvement pour la creation Creation_interactive, s arrete une fois a la sortie du labyrinthe*/
 {do
 	{
 		Deplacement_Creation(x, y, x2, y2, n, MUR) ;
