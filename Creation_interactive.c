@@ -17,7 +17,6 @@ void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[100][100] ){
 		case 8 :
 			MUR[x2][(2*y2)+2] = 0 ;
 			draw_line(x - 30, y + 30, x + 30, y + 30) ;
-      printf("mur = %d\n", MUR[x2][(2*y2)+2]);
 			break ;
 	}
 }

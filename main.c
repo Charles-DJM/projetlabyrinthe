@@ -28,8 +28,6 @@ Mouvement_Creation (&x, &y, &x2, &y2, n, MUR) ;
 f = fopen ("Labyrinthe.txt", "w") ;
 Enregistrement (f, MUR) ;
 
-printf("%d %d\n", x2, y2) ;
-
 get_key () ;
 
 stop_graphics () ;
