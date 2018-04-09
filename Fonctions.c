@@ -21,10 +21,13 @@ update_graphics () ;
 return ;
 }
 
-void Creer_Curseur(int *x, int *y)
+void Creer_Curseur (int *x, int *y)
 /* Crée le curseur en haut a gauche du labyrinthe*/
 {
 	set_drawing_color(color_BLACK);
 	draw_circle_full(*x, *y, 15);
 	update_graphics () ;
 }
+
+void Enregistrement (FILE *f)
+{}
