@@ -45,6 +45,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 				*y = *y-60;
 				*y2 -- ;
 				draw_circle_full(*x, *y, 15);
+				Supprimer_Murs (2, x, y, x2, y2, MUR[][]) ;
 				}
 			break;
 		case '4' :
@@ -55,6 +56,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 				*x = *x-60;
 				*x2 -- ;
 				draw_circle_full(*x, *y, 15);
+				Supprimer_Murs (4, x, y, x2, y2, MUR[][]) ;
 				}
 			break;
 		case '6' :
@@ -65,6 +67,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 				*x = *x +60;
 				*x2 ++ ;
 				draw_circle_full(*x, *y, 15);
+				Supprimer_Murs (6, x, y, x2, y2, MUR[][]) ;
 				}
 			break;
 		case '8' :
@@ -75,6 +78,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 				*y= *y+60;
 				*y2 ++ ;
 				draw_circle_full(*x, *y, 15);
+				Supprimer_Murs (8, x, y, x2, y2, MUR[][]) ;
 				}
 			break;
 	}
@@ -82,7 +86,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 	return;
 }
 
-void Mouvement_Creation (int *x, int *y, int n)
+void Mouvement_Creation (int *x, int *y, int *x2, int *y2, int n)
 /**/
 {do
 	{
@@ -92,8 +96,8 @@ while ((*x != (60 * n) - 30) || (*y != 30)) ;
 return ;
 }
 
-void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[][] ){
-/**/
+void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[500][500] ){
+/*Supprime un mur dans le tableau mur et graphiquement*/
 	set_drawing_color(color_WHITE);
 	switch(dir){
 		case 2 :
