@@ -29,7 +29,7 @@ void Creer_Curseur(int *x, int *y)
 	update_graphics () ;
 }
 
-void Deplacement_Creation (int *x, int *y, int n)
+void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 /* Déplacement du curseur en fonction de la variable direction. */
 /* si direction = 1  curseur déplacé vers le bas
  * si direction = 2 curseur déplacé vers la gauche
@@ -43,6 +43,7 @@ void Deplacement_Creation (int *x, int *y, int n)
 				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
 				set_drawing_color(color_BLACK);
 				*y = *y-60;
+				*y2 -- ;
 				draw_circle_full(*x, *y, 15);
 				}
 			break;
@@ -52,6 +53,7 @@ void Deplacement_Creation (int *x, int *y, int n)
 				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
 				set_drawing_color(color_BLACK);
 				*x = *x-60;
+				*x2 -- ;
 				draw_circle_full(*x, *y, 15);
 				}
 			break;
@@ -61,6 +63,7 @@ void Deplacement_Creation (int *x, int *y, int n)
 				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
 				set_drawing_color(color_BLACK);
 				*x = *x +60;
+				*x2 ++ ;
 				draw_circle_full(*x, *y, 15);
 				}
 			break;
@@ -70,6 +73,7 @@ void Deplacement_Creation (int *x, int *y, int n)
 				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
 				set_drawing_color(color_BLACK);
 				*y= *y+60;
+				*y2 ++ ;
 				draw_circle_full(*x, *y, 15);
 				}
 			break;
@@ -81,8 +85,20 @@ void Deplacement_Creation (int *x, int *y, int n)
 void Mouvement (int *x, int *y, int n)
 {do
 	{
-		Deplacement_Creation(x, y, n) ;
+		Deplacement_Creation(x, y, x2, y2, n) ;
 	}
 while ((*x != (60 * n) - 30) || (*y != 30)) ;
 return ;
+}
+
+void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[][] ){
+	set_drawing_color(color_WHITE);
+	switch(dir){
+		case 2 :
+			MUR[x2][2 * y2] = 0 ;
+			draw_line
+			break;
+		case 4 :
+			MUR[x]
+	}
 }

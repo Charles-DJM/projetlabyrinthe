@@ -9,8 +9,8 @@ int main (void)
 int n ; //Taille du labyrinthe
 
 n = Taille () ;
-int MUR [800][800] = {0} ; // Défini l'état des murs
-int x=30 , y= (n*60)-30 ;
+int MUR [500][500] = {1} ; // Défini l'état des murs
+int x=30 , y= (n*60)-30, x2 = 0, y2 = n ;
 start_graphics() ;
 
 Grille (n) ;
