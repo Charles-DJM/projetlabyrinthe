@@ -62,46 +62,46 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[500]
 	switch(get_key()){
 		case '2' :
 			if (*y > 30)
-				{set_drawing_color(color_WHITE);
+				{Supprimer_Murs (2, *x, *y, *x2, *y2, MUR) ;
+				set_drawing_color(color_WHITE);
 				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
 				set_drawing_color(color_BLACK);
 				*y = *y-60;
 				*y2 -- ;
 				draw_circle_full(*x, *y, 15);
-				Supprimer_Murs (2, *x, *y, *x2, *y2, MUR) ;
 				}
 			break;
 		case '4' :
 			if (*x > 30)
-				{set_drawing_color(color_WHITE);
+				{Supprimer_Murs (4, *x, *y, *x2, *y2, MUR) ;
+				set_drawing_color(color_WHITE);
 				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
 				set_drawing_color(color_BLACK);
 				*x = *x-60;
 				*x2 -- ;
 				draw_circle_full(*x, *y, 15);
-				Supprimer_Murs (4, *x, *y, *x2, *y2, MUR) ;
 				}
 			break;
 		case '6' :
 			if (*x < (60 * n) - 30)
-				{set_drawing_color(color_WHITE);
+				{Supprimer_Murs (6, *x, *y, *x2, *y2, MUR) ;
+				set_drawing_color(color_WHITE);
 				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
 				set_drawing_color(color_BLACK);
 				*x = *x +60;
 				*x2 ++ ;
 				draw_circle_full(*x, *y, 15);
-				Supprimer_Murs (6, *x, *y, *x2, *y2, MUR) ;
 				}
 			break;
 		case '8' :
 			if (*y < (60 * n) - 30)
-				{set_drawing_color(color_WHITE);
+				{Supprimer_Murs (8, *x, *y, *x2, *y2, MUR) ;
+				set_drawing_color(color_WHITE);
 				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
 				set_drawing_color(color_BLACK);
 				*y= *y+60;
 				*y2 ++ ;
-				draw_circle_full(*x, *y, 15);
-				Supprimer_Murs (8, *x, *y, *x2, *y2, MUR) ;
+				draw_circle_full(*x, *y, 15) ;
 				}
 			break;
 	}
