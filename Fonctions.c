@@ -9,10 +9,11 @@ return n ;
 void Grille (int n)
 /* Création d'une grille de taile n * n. */
 {int i, j ;
-for (i = 0 ; i < (n + 1) * 20 ; i = i + 20)
-	{for (j = 0 ; j < (n + 1) * 20 ; j = j + 20)
-		{draw_line (i, j, i + 20, j) ;
-		}
+for (j = 0 ; j <= (n + 1) * 60 ; j = j + 60)
+	{draw_line (i, j, (n + 1 * 60), j) ;
+	}
+for (i = 0 ; i <= (n + 1) * 60 ; i = i + 60)
+	{draw_line (i, j, i, (n + 1 * 60)) ;
 	}
 update_graphics () ;
 return ;
@@ -22,7 +23,7 @@ void Creer_Curseur(int n)
 /* Crée le curseur en haut a gauche du labyrinthe*/
 {
 	set_drawing_color(color_BLACK);
-	draw_circle_full( 10, (n*20 - 10), 5);
+	draw_circle_full( 30, (n*60 - 30), 15);
 	update_graphics () ;
 }
 
@@ -34,25 +35,25 @@ void Deplacement (int direction, int *x, int *y)
  *  direction = 4 curseur déplacé vers le haut */
 {
 	set_drawing_color(color_WHITE);
-	draw_circle_full(*x, *y, 5); //efface  le curseur à sa position précédente
+	draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
 
 	set_drawing_color(color_BLACK);
 	switch(direction){
 		case 1 :
-			*y = *y-20;
-			draw_circle_full(*x, *y, 5);
+			*y = *y-60;
+			draw_circle_full(*x, *y, 15);
 			break;
 		case 2 :
-			*x = *x-20;
-			draw_circle_full(*x, *y, 5);
+			*x = *x-60;
+			draw_circle_full(*x, *y, 15);
 			break;
 		case 3 :
-			*x = *x +20;
-			draw_circle_full(*x, *y, 5);
+			*x = *x +60;
+			draw_circle_full(*x, *y, 15);
 			break;
 		case 4 :
-			*y= *y+20;
-			draw_circle_full(*x, *y, 5);
+			*y= *y+60;
+			draw_circle_full(*x, *y, 15);
 			break;
 	}
 	update_graphics () ;
