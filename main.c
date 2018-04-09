@@ -6,7 +6,7 @@
 
 
 int main (void)
-{
+{FILE *f ;
 int n ; //Taille du labyrinthe
 
 n = Taille () ;
