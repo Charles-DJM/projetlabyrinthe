@@ -35,7 +35,7 @@ void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[500][500] ){
 	switch(dir){
 		case 2 :
 			MUR[x2][2 * y2] = 0 ;
-			draw_line(x - 29, y - 30, x + 29, y - 30) ;
+			draw_line(x - 30, y - 30, x + 30, y - 30) ;
 			break;
 		case 4 :
 			MUR[x2][(2*y2)+1] = 0 ;
@@ -47,7 +47,7 @@ void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[500][500] ){
 			break;
 		case 8 :
 			MUR[x2][(2*y2)+2] = 0 ;
-			draw_line(x - 29, y + 30, x + 29, y + 30) ;
+			draw_line(x - 30, y + 30, x + 30, y + 30) ;
 			break ;
 	}
 }
