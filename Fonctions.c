@@ -6,7 +6,7 @@ scanf("%d", &n) ;
 return n ;
 }
 
-void Grille (int n)
+void Grille ()
 /* Création d'une grille de taile n * n. */
 {int i, j ;
 i = 0 ;
@@ -29,7 +29,7 @@ void Creer_Curseur(int *x, int *y)
 	update_graphics () ;
 }
 
-void Deplacement (int *x, int *y)
+void Deplacement_Creation (int *x, int *y)
 /* Déplacement du curseur en fonction de la variable direction. */
 /* si direction = 1  curseur déplacé vers le bas
  * si direction = 2 curseur déplacé vers la gauche
@@ -41,30 +41,39 @@ void Deplacement (int *x, int *y)
 	set_drawing_color(color_BLACK);
 	switch(get_key()){
 		case '2' :
-			*y = *y-60;
-			draw_circle_full(*x, *y, 15);
+			if (*y > 30)
+				{
+				*y = *y-60;
+				draw_circle_full(*x, *y, 15);
+				}
 			break;
 		case '4' :
-			*x = *x-60;
-			draw_circle_full(*x, *y, 15);
+			if (*x > 30)
+				{*x = *x-60;
+				draw_circle_full(*x, *y, 15);
+				}
 			break;
 		case '6' :
-			*x = *x +60;
-			draw_circle_full(*x, *y, 15);
+			if (*x < (60 * n) - 30)
+				{*x = *x +60;
+				draw_circle_full(*x, *y, 15);
+				}
 			break;
 		case '8' :
-			*y= *y+60;
-			draw_circle_full(*x, *y, 15);
+			if (*y < (60 * n) - 30)
+				{*y= *y+60;
+				draw_circle_full(*x, *y, 15);
+				}
 			break;
 	}
 	update_graphics () ;
 	return;
 }
 
-void Mouvement (int *x, int *y, int n)
+void Mouvement (int *x, int *y)
 {do
 	{
-		Deplacement(x, y) ;
+		Deplacement_Creation(x, y) ;
 	}
 while ((*x != (60 * n) - 30) || (*y != 30)) ;
 return ;
