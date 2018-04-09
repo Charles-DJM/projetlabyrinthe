@@ -33,9 +33,9 @@ void Enregistrement (FILE *f, int MUR[100][100])
 {int i, j ;
 for (i = 0 ; i < 1 ; i++)
 	{for (j = 0 ; j < 1 ; j++)
-		{putc(MUR[i][j], f) ;
+		{fprintf(f, "%d", MUR[i][j]) ;
 		}
-	putc('\n', f) ;
+	fprintf(f, "\n") ;
 	}
 return ;
 }

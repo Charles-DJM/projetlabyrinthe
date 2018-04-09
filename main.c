@@ -18,7 +18,7 @@ Grille (n) ;
 Creer_Curseur (&x, &y) ;
 Mouvement_Creation (&x, &y, &x2, &y2, n, MUR) ;
 
-f = fopen ("Labyrinthes.txt", "w") ;
+f = fopen ("Labyrinthe.txt", "w") ;
 Enregistrement (f, MUR) ;
 
 get_key () ;
