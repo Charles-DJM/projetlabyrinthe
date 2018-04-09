@@ -12,7 +12,7 @@ start_graphics() ;
 Grille (n) ;
 Creer_Curseur (&x, &y) ;
 Mouvement (&x, &y, n) ;
-
+printf("%d %d", x, y);
 get_key () ;
 
 stop_graphics () ;
