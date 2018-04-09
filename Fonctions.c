@@ -22,7 +22,7 @@ void Creer_Curseur(int n)
 /* Crée le curseur en haut a gauche du labyrinthe*/
 {
 	set_drawing_color(black);
-	draw_circle( 10, (n*20-10), 5);
+	draw_circle( 10, (n*20 - 10), 5);
 }
 
 void Deplacement (int direction, int *x, int *y)
