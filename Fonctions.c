@@ -63,7 +63,7 @@ void Deplacement (int *x, int *y)
 
 void Mouvement (int *x, int *y, int n)
 {do
-	{Deplacement(&x, &y) ;
+	{Deplacement(*x, *y) ;
 	}
 while ((*x != (60 * n) - 30) || (*y != 30)) ;
 return ;
