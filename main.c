@@ -11,6 +11,8 @@ start_graphics() ;
 
 Grille (n) ;
 Creer_Curseur (&x, &y) ;
+Mouvement (&x, &y, n) ;
+
 get_key () ;
 
 stop_graphics () ;
