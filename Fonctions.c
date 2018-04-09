@@ -11,7 +11,7 @@ void Grille (int n)
 {int i, j ;
 for (i = 0 ; i < (n + 1) * 20 ; i = i + 20)
 	{for (j = 0 ; j < (n + 1) * 20 ; j = j + 20)
-		{draw_line (i, j, i + 20, j + 20) ;
+		{draw_line (i, j, i + 20, j) ;
 		}
 	}
 update_graphics () ;
