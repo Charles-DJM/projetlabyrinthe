@@ -1,4 +1,4 @@
-void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[500][500] ){
+void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[100][100] ){
 /*Supprime un mur dans le tableau mur et graphiquement*/
 	set_drawing_color(color_WHITE);
 	switch(dir){
@@ -21,7 +21,7 @@ void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[500][500] ){
 	}
 }
 
-void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[500][500])
+void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[100][100])
 /* Déplacement du curseur en fonction de la variable direction. */
 /* si direction = 1  curseur déplacé vers le bas
  * si direction = 2 curseur déplacé vers la gauche
@@ -78,7 +78,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[500]
 	return;
 }
 
-void Mouvement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[500][500])
+void Mouvement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[100][100])
 /**/
 {do
 	{
