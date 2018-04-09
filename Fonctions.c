@@ -6,7 +6,7 @@ scanf("%d", &n) ;
 return n ;
 }
 
-void Grille ()
+void Grille (int n)
 /* Création d'une grille de taile n * n. */
 {int i, j ;
 i = 0 ;
@@ -29,7 +29,7 @@ void Creer_Curseur(int *x, int *y)
 	update_graphics () ;
 }
 
-void Deplacement_Creation (int *x, int *y)
+void Deplacement_Creation (int *x, int *y, int n)
 /* Déplacement du curseur en fonction de la variable direction. */
 /* si direction = 1  curseur déplacé vers le bas
  * si direction = 2 curseur déplacé vers la gauche
@@ -70,10 +70,10 @@ void Deplacement_Creation (int *x, int *y)
 	return;
 }
 
-void Mouvement (int *x, int *y)
+void Mouvement (int *x, int *y, int n)
 {do
 	{
-		Deplacement_Creation(x, y) ;
+		Deplacement_Creation(x, y, n) ;
 	}
 while ((*x != (60 * n) - 30) || (*y != 30)) ;
 return ;
