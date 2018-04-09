@@ -19,7 +19,7 @@ Creer_Curseur (&x, &y) ;
 Mouvement_Creation (&x, &y, &x2, &y2, n, MUR) ;
 
 f = fopen ("Labyrinthes.txt", "w") ;
-Enregistrement (f) ;
+Enregistrement (f, MUR) ;
 
 get_key () ;
 
