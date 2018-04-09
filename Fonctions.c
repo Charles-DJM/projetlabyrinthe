@@ -90,7 +90,7 @@ void Mouvement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[500][5
 /**/
 {do
 	{
-		Deplacement_Creation(x, y, x2, y2, n, MUR[500][500]) ;
+		Deplacement_Creation(x, y, x2, y2, n, MUR) ;
 	}
 while ((*x != (60 * n) - 30) || (*y != 30)) ;
 return ;
