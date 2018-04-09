@@ -30,6 +30,7 @@ void Creer_Curseur (int *x, int *y)
 }
 
 void Enregistrement (FILE *f, int MUR[100][100])
+/* Enregistre le tableau MUR dans un fichier texte */
 {int i, j ;
 for (i = 0 ; i < 100 ; i++)
 	{for (j = 0 ; j < 100 ; j++)

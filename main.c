@@ -12,8 +12,8 @@ int n ; //Taille du labyrinthe
 
 n = Taille () ;
 int MUR [100][100] ;
-for (i = 0 ; i < 500 ; i++)
-  {for (j = 0 ; j < 500 ; j++)
+for (i = 0 ; i < 100 ; i++)
+  {for (j = 0 ; j < 100 ; j++)
     {MUR[i][j] = 1 ;
     }
   } // Défini l'état des murs initiallement
