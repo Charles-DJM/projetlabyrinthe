@@ -82,7 +82,8 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 	return;
 }
 
-void Mouvement (int *x, int *y, int n)
+void Mouvement_Creation (int *x, int *y, int n)
+/**/
 {do
 	{
 		Deplacement_Creation(x, y, x2, y2, n) ;
@@ -92,13 +93,24 @@ return ;
 }
 
 void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[][] ){
+/**/
 	set_drawing_color(color_WHITE);
 	switch(dir){
 		case 2 :
 			MUR[x2][2 * y2] = 0 ;
-			draw_line
+			draw_line(x - 30, y - 30, x + 30, y - 30) ;
 			break;
 		case 4 :
-			MUR[x]
+			MUR[x2][(2*y2)+1] = 0 ;
+			draw_line(x - 30, y - 30, x - 30, y + 30) ;
+			break;
+		case 6 :
+			MUR[x2+1][(2*y2)+1] = 0 ;
+			draw_line(x + 30, y - 30, x + 30, y + 30) ;
+			break;
+		case 8 :
+			MUR[x2][(2*y2)+2] = 0 ;
+			draw_line(x - 30, y + 30, x + 30, y + 30) ;
+			break ;
 	}
 }
