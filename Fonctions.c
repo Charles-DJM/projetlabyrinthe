@@ -10,8 +10,8 @@ void Grille (int n)
 /* Création d'une grille de taile n * n. */
 {int i, j ;
 i = 0 ;
-for (j = 0 ; j < (n + 1) * 60 ; j = j + 60)
-	{draw_line (i, j, ((n + 1 )* 60), j) ;
+for (j = 0 ; j <= (n + 1) * 60 ; j = j + 60)
+	{draw_line (i, j, (n * 60), j) ;
 	}
 j = 0 ;
 for (i = 0 ; i < (n + 1) * 60 ; i = i + 60)
