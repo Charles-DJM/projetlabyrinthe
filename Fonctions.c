@@ -29,6 +29,28 @@ void Creer_Curseur(int *x, int *y)
 	update_graphics () ;
 }
 
+void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[500][500] ){
+/*Supprime un mur dans le tableau mur et graphiquement*/
+	set_drawing_color(color_WHITE);
+	switch(dir){
+		case 2 :
+			MUR[x2][2 * y2] = 0 ;
+			draw_line(x - 30, y - 30, x + 30, y - 30) ;
+			break;
+		case 4 :
+			MUR[x2][(2*y2)+1] = 0 ;
+			draw_line(x - 30, y - 30, x - 30, y + 30) ;
+			break;
+		case 6 :
+			MUR[x2+1][(2*y2)+1] = 0 ;
+			draw_line(x + 30, y - 30, x + 30, y + 30) ;
+			break;
+		case 8 :
+			MUR[x2][(2*y2)+2] = 0 ;
+			draw_line(x - 30, y + 30, x + 30, y + 30) ;
+			break ;
+	}
+}
 void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[500][500])
 /* Déplacement du curseur en fonction de la variable direction. */
 /* si direction = 1  curseur déplacé vers le bas
@@ -94,27 +116,4 @@ void Mouvement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[500][5
 	}
 while ((*x != (60 * n) - 30) || (*y != 30)) ;
 return ;
-}
-
-void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[500][500] ){
-/*Supprime un mur dans le tableau mur et graphiquement*/
-	set_drawing_color(color_WHITE);
-	switch(dir){
-		case 2 :
-			MUR[x2][2 * y2] = 0 ;
-			draw_line(x - 30, y - 30, x + 30, y - 30) ;
-			break;
-		case 4 :
-			MUR[x2][(2*y2)+1] = 0 ;
-			draw_line(x - 30, y - 30, x - 30, y + 30) ;
-			break;
-		case 6 :
-			MUR[x2+1][(2*y2)+1] = 0 ;
-			draw_line(x + 30, y - 30, x + 30, y + 30) ;
-			break;
-		case 8 :
-			MUR[x2][(2*y2)+2] = 0 ;
-			draw_line(x - 30, y + 30, x + 30, y + 30) ;
-			break ;
-	}
 }

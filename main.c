@@ -15,7 +15,7 @@ start_graphics() ;
 
 Grille (n) ;
 Creer_Curseur (&x, &y) ;
-Mouvement_Creation (&x, &y, &x2, &y2, n, MUR[500][500]) ;
+Mouvement_Creation (&x, &y, &x2, &y2, n, MUR) ;
 
 get_key () ;
 
