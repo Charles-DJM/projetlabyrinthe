@@ -21,7 +21,7 @@ return ;
 void Creer_Curseur(int n)
 /* Crée le curseur en haut a gauche du labyrinthe*/
 {
-	set_drawing_color(black);
+	set_drawing_color(color_BLACK);
 	draw_circle( 10, (n*20 - 10), 5);
 }
 
@@ -32,10 +32,10 @@ void Deplacement (int direction, int *x, int *y)
  *  direction = 3 curserur déplacé vers la droite
  *  direction = 4 curseur déplacé vers le haut */
 {
-	set_drawing_color(white);
+	set_drawing_color(color_WHITE);
 	draw_circle(*x, *y, 5); //efface  le curseur à sa position précédente
 
-	set_drawing_color(black);
+	set_drawing_color(color_BLACK);
 	switch(direction){
 		case 1 :
 			*y = *y-20;
