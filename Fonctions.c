@@ -36,32 +36,40 @@ void Deplacement_Creation (int *x, int *y, int n)
  *  direction = 3 curserur déplacé vers la droite
  *  direction = 4 curseur déplacé vers le haut */
 {
-	set_drawing_color(color_WHITE);
-	draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
-	set_drawing_color(color_BLACK);
 	switch(get_key()){
 		case '2' :
 			if (*y > 30)
-				{
+				{set_drawing_color(color_WHITE);
+				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
+				set_drawing_color(color_BLACK);
 				*y = *y-60;
 				draw_circle_full(*x, *y, 15);
 				}
 			break;
 		case '4' :
 			if (*x > 30)
-				{*x = *x-60;
+				{set_drawing_color(color_WHITE);
+				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
+				set_drawing_color(color_BLACK);
+				*x = *x-60;
 				draw_circle_full(*x, *y, 15);
 				}
 			break;
 		case '6' :
 			if (*x < (60 * n) - 30)
-				{*x = *x +60;
+				{set_drawing_color(color_WHITE);
+				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
+				set_drawing_color(color_BLACK);
+				*x = *x +60;
 				draw_circle_full(*x, *y, 15);
 				}
 			break;
 		case '8' :
 			if (*y < (60 * n) - 30)
-				{*y= *y+60;
+				{set_drawing_color(color_WHITE);
+				draw_circle_full(*x, *y, 15); //efface  le curseur à sa position précédente
+				set_drawing_color(color_BLACK);
+				*y= *y+60;
 				draw_circle_full(*x, *y, 15);
 				}
 			break;
