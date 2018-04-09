@@ -23,6 +23,7 @@ void Creer_Curseur(int n)
 {
 	set_drawing_color(color_BLACK);
 	draw_circle( 10, (n*20 - 10), 5);
+	update_graphics () ;
 }
 
 void Deplacement (int direction, int *x, int *y)
