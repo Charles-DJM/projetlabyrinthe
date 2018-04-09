@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "libgraphique.h"
 #include "Fonctions.c"
-#include "Creation_interractive.c"
+#include "Creation_interactive.c"
 
 
 
