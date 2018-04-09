@@ -34,7 +34,7 @@ void Deplacement (int direction, int *x, int *y)
 {
 	set_drawing_color(white);
 	draw_circle(*x, *y, 5); //efface  le curseur à sa position précédente
-	
+
 	set_drawing_color(black);
 	switch(direction){
 		case 1 :
@@ -55,8 +55,5 @@ void Deplacement (int direction, int *x, int *y)
 			break;
 	}
 	update_graphics () ;
-	
 	return;
 }
-			
-		
