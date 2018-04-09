@@ -29,7 +29,7 @@ void Creer_Curseur(int *x, int *y)
 	update_graphics () ;
 }
 
-void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
+void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[500][500])
 /* Déplacement du curseur en fonction de la variable direction. */
 /* si direction = 1  curseur déplacé vers le bas
  * si direction = 2 curseur déplacé vers la gauche
@@ -45,7 +45,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 				*y = *y-60;
 				*y2 -- ;
 				draw_circle_full(*x, *y, 15);
-				Supprimer_Murs (2, x, y, x2, y2, MUR[][]) ;
+				Supprimer_Murs (2, x, y, x2, y2, MUR) ;
 				}
 			break;
 		case '4' :
@@ -56,7 +56,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 				*x = *x-60;
 				*x2 -- ;
 				draw_circle_full(*x, *y, 15);
-				Supprimer_Murs (4, x, y, x2, y2, MUR[][]) ;
+				Supprimer_Murs (4, x, y, x2, y2, MUR) ;
 				}
 			break;
 		case '6' :
@@ -67,7 +67,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 				*x = *x +60;
 				*x2 ++ ;
 				draw_circle_full(*x, *y, 15);
-				Supprimer_Murs (6, x, y, x2, y2, MUR[][]) ;
+				Supprimer_Murs (6, x, y, x2, y2, MUR) ;
 				}
 			break;
 		case '8' :
@@ -78,7 +78,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n)
 				*y= *y+60;
 				*y2 ++ ;
 				draw_circle_full(*x, *y, 15);
-				Supprimer_Murs (8, x, y, x2, y2, MUR[][]) ;
+				Supprimer_Murs (8, x, y, x2, y2, MUR) ;
 				}
 			break;
 	}
