@@ -3,13 +3,16 @@
 #include "Fonctions.c"
 
 int main (void)
-{int *x, *y ;
+{
 int n ;
 n = Taille () ;
+int *x=30 , *y= (n*60)-30 ;
 start_graphics() ;
+
 Grille (n) ;
-Creer_Curseur (n) ;
+Creer_Curseur (&x, &y) ;
 get_key () ;
+
 stop_graphics () ;
 return 0 ;
 }
