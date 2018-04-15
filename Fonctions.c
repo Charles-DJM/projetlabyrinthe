@@ -1,3 +1,5 @@
+#define MAX 100
+
 int Taille ()
 /* Demande paramètre n. */
 {int n ;
@@ -27,16 +29,13 @@ void Creer_Curseur (int *x, int *y)
 	set_drawing_color(color_BLACK);
 	draw_circle_full(*x, *y, 15);
 	update_graphics () ;
+	return ;
 }
 
-void Enregistrement (FILE *f, int MUR[100][100])
-/* Enregistre le tableau MUR dans un fichier texte */
-{int i, j ;
-for (i = 0 ; i < 100 ; i++)
-	{for (j = 0 ; j < 100 ; j++)
-		{fprintf(f, "%d", MUR[i][j]) ;
-		}
-	fprintf(f, "\n") ;
-	}
+void Effacer_Labyrinthe (int n)
+/* Efface le labyrinthe affiché à l'écran */
+{set_drawing_color(color_WHITE);
+draw_rectangle_full (0, 0, n * 60, n * 60) ;
+update_graphics () ;
 return ;
 }

@@ -2,18 +2,22 @@
 #include "libgraphique.h"
 #include "Fonctions.c"
 #include "Creation_interactive.c"
+#include "Enregistrements.c"
+
+#define MAX 100
 
 
 
 int main (void)
-{int i, j ;
+{int i, j, a ;
 FILE *f ;
 int n ; //Taille du labyrinthe
 
 n = Taille () ;
-int MUR [100][100] ;
-for (i = 0 ; i < 100 ; i++)
-  {for (j = 0 ; j < 100 ; j++)
+int MUR [MAX][MAX] ;
+int MUR2 [MAX][MAX] ;
+for (i = 0 ; i < MAX ; i++)
+  {for (j = 0 ; j < MAX ; j++)
     {MUR[i][j] = 1 ;
     }
   } // Défini l'état des murs initiallement
@@ -27,10 +31,20 @@ Mouvement_Creation (&x, &y, &x2, &y2, n, MUR) ;
 
 f = fopen ("Labyrinthe.txt", "w") ;
 Enregistrement (f, MUR) ;
+fclose (f) ;
+
+get_key () ;
+Effacer_Labyrinthe (n) ;
+
+f = fopen("Labyrinthe.txt", "r") ;
+Charger_Labyrinthe (f, MUR2) ;
+fclose (f) ;
+
+get_key () ;
+Generer_Labyrinthe (n, MUR2) ;
 
 get_key () ;
 
 stop_graphics () ;
-fclose (f) ;
 return 0 ;
 }

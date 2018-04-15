@@ -1,4 +1,6 @@
-void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[100][100] ){
+#define MAX 100
+
+void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[MAX][MAX] ){
 /*Supprime un mur dans le tableau mur et graphiquement*/
 	set_drawing_color(color_WHITE);
 	switch(dir){
@@ -21,7 +23,7 @@ void Supprimer_Murs(int dir, int x, int y, int x2, int y2, int MUR[100][100] ){
 	}
 }
 
-void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[100][100])
+void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[MAX][MAX])
 /* Déplacement du curseur en fonction de la variable direction. */
 /* si direction = 1  curseur déplacé vers le bas
  * si direction = 2 curseur déplacé vers la gauche
@@ -78,7 +80,7 @@ void Deplacement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[100]
 	return;
 }
 
-void Mouvement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[100][100])
+void Mouvement_Creation (int *x, int *y, int *x2, int *y2, int n, int MUR[MAX][MAX])
 /*Lance le mouvement pour la creation Creation_interactive, s arrete une fois a la sortie du labyrinthe*/
 {do
 	{
