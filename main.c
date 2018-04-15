@@ -18,7 +18,7 @@ for (i = 0 ; i < 100 ; i++)
     }
   } // Défini l'état des murs initiallement
 
-int x=30 , y= (n*60)-30, x2 = 0, y2 = n ;
+int x=30 , y= (n*60)-30, x2 = 0, y2 = n - 1 ;
 start_graphics() ;
 
 Grille (n) ;
