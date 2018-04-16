@@ -10,7 +10,8 @@ return n ;
 
 void Grille (int n)
 /* Création d'une grille de taile n * n. */
-{int i, j ;
+{set_drawing_color(color_BLACK);
+int i, j ;
 i = 0 ;
 for (j = 0 ; j < (n + 1) * 60 ; j = j + 60)
 	{draw_line (i, j, (n * 60), j) ;
@@ -19,6 +20,17 @@ j = 0 ;
 for (i = 0 ; i < (n + 1) * 60 ; i = i + 60)
 	{draw_line (i, j, i, (n * 60)) ;
 	}
+update_graphics () ;
+return ;
+}
+
+void Grille_Limites (int n)
+/* Création d'une grille de taile n * n. */
+{set_drawing_color(color_BLACK);
+draw_line (0, 0, (n * 60), 0) ;
+draw_line (0, 0, 0, (n * 60)) ;
+draw_line ((n * 60), 0, (n * 60), (n * 60)) ;
+draw_line (0, (n * 60), (n * 60), (n * 60)) ;
 update_graphics () ;
 return ;
 }
