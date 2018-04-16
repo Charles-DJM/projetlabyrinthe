@@ -12,6 +12,12 @@ for (i = 0 ; i < MAX ; i++)
 return ;
 }
 
+void Enregistrement_n (FILE *f, int n)
+/* Enregistre le n correspondant au labyrinthe */
+{fprintf(f, "%d", n) ;
+return ;
+}
+
 void Charger_Labyrinthe (FILE *f, int MUR2[MAX][MAX])
 /* Reconstitue le tableau MUR2 à partir du fichier texte */
 {int i, j ;
@@ -26,6 +32,12 @@ for (i = 0 ; i < MAX ; i++)
 		}
     getc(f) ;
 	}
+return ;
+}
+
+void Charger_n (FILE *f, int *n)
+/* Reconstitue le n associé au labyrinthe */
+{*n = getc(f) - 48 ;
 return ;
 }
 
