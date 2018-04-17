@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "libgraphique.h"
 #include "Fonctions.c"
@@ -15,6 +16,7 @@ int main (void)
 {int i, j, Score, Choix, Choix2, Choix3, Choix4, Boucle ;
 int x, y, x2, y2, n ;
 FILE *f ;
+srand(time(0));
 
 start_graphics() ;
 
@@ -127,7 +129,10 @@ do
   }
 
   if (Choix == 2)
-    {}
+    {
+      clear_screen();
+      Creation_Laby_Auto();
+    }
 
   if (Choix == 3)
     {
