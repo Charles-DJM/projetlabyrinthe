@@ -44,10 +44,10 @@ void Creer_Curseur (int *x, int *y)
 	return ;
 }
 
-void Effacer_Labyrinthe (int n)
+void Effacer_Score ()
 /* Efface le labyrinthe affiché à l'écran */
 {set_drawing_color(color_WHITE);
-draw_rectangle_full (0, 0, n * 60, n * 60) ;
+draw_rectangle_full (530, 100, 700, 500) ;
 update_graphics () ;
 return ;
 }

@@ -13,7 +13,7 @@
 #define MAX 100
 
 int main (void)
-{int i, j, Score, Choix, Choix2, Choix3, Choix4, Boucle ;
+{int i, j, Score, Choix, Choix2, Choix3, Choix4, Choix5, Boucle ;
 int x, y, x2, y2, n ;
 FILE *f ;
 srand(time(0));
@@ -47,7 +47,7 @@ do
   clear_screen () ;
   set_drawing_color (color_BLACK) ;
   set_font (font_HELVETICA_18) ;
-  draw_string (100, 400, "Entrez le chiffre correspondant à votre choix :") ;
+  draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
   set_font (font_HELVETICA_12) ;
   draw_string (120, 360, "1 : Construction interactive d'un labyrinthe") ;
   draw_string (120, 320, "2 : Construction automatique d'un labyrinthe") ;
@@ -88,7 +88,7 @@ do
     clear_screen () ;
     set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_18) ;
-    draw_string (100, 400, "Entrez le chiffre correspondant à votre choix :") ;
+    draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 360, "1 : Sauvegarde du labyrinthe dans 'Labyrinthe1.txt'") ;
     draw_string (120, 320, "2 : Sauvegarde du labyrinthe dans 'Labyrinthe2.txt'") ;
@@ -127,13 +127,32 @@ do
       }
 
 
-  Boucle = 1 ;
-  }
+    Boucle = 1 ;
+    }
 
   if (Choix == 2)
     {
-      clear_screen();
-      Creation_Laby_Auto();
+    // CHoix entre n aléatoire ou prédéfinis
+    clear_screen () ;
+    set_drawing_color (color_BLACK) ;
+    set_font (font_HELVETICA_18) ;
+    draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_font (font_HELVETICA_12) ;
+    draw_string (120, 360, "1 : Parametre n choisit aleatoirement") ;
+    draw_string (120, 320, "2 : Choisir parametre n") ;
+    update_graphics () ;
+    Choix5 = get_key () - 48 ;
+
+    if (Choix5 == 1)
+      {Creation_Laby_Auto() ;
+      }
+
+    if (Choix5 == 2)
+      {Creation_Laby_Auto() ;
+      }
+
+
+    Boucle = 1 ;
     }
 
   if (Choix == 3)
@@ -143,7 +162,7 @@ do
     clear_screen () ;
     set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_18) ;
-    draw_string (100, 400, "Entrez le chiffre correspondant à votre choix :") ;
+    draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 360, "1 : Chargement du labyrinthe dans 'Labyrinthe1.txt'") ;
     draw_string (120, 320, "2 : Chargement du labyrinthe dans 'Labyrinthe2.txt'") ;
@@ -185,7 +204,7 @@ do
     clear_screen () ;
     set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_18) ;
-    draw_string (100, 400, "Entrez le chiffre correspondant à votre choix :") ;
+    draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 360, "1 : Jouer en voyant les limites du labyrinthe") ;
     draw_string (120, 320, "2 : Jouer en decouvrant les limites du labyrinthe") ;
@@ -200,7 +219,12 @@ do
       Score = 0 ;
       Creer_Curseur (&x, &y) ;
       Mouvement_Jeu_Limites_Visibles (&x, &y, &x2, &y2, n, MUR2, &Score) ;
-      printf("%d\n", Score) ;
+  		Effacer_Score () ;
+  		set_drawing_color (color_BLACK) ;
+  		set_font (font_HELVETICA_12) ;
+  		draw_printf (530, 210, "Bravo !") ;
+ 		  draw_printf (530, 170, "Score : %d", Score) ;
+  		update_graphics () ;
       get_key () ;
       }
 
@@ -212,15 +236,22 @@ do
       Score = 0 ;
       Creer_Curseur (&x, &y) ;
       Mouvement_Jeu_Limites_Invisibles (&x, &y, &x2, &y2, n, MUR2, &Score) ;
-      printf("%d\n", Score) ;
+  		Effacer_Score () ;
+  		set_drawing_color (color_BLACK) ;
+  		set_font (font_HELVETICA_12) ;
+  		draw_printf (530, 210, "Bravo !") ;
+ 		  draw_printf (530, 170, "Score : %d", Score) ;
+  		update_graphics () ;
       get_key () ;
       }
 
     Boucle = 1 ;
-  }
+    }
 
   if (Choix == 4)
-    {}
+    {
+    Boucle = 1 ;
+    }
 
   if (Choix == 5)
     {Boucle = 0 ;

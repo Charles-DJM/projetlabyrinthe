@@ -128,6 +128,11 @@ void Mouvement_Jeu_Limites_Visibles (int *x, int *y, int *x2, int *y2, int n, in
 	{
 		Deplacement_Jeu_Limites_Visibles (x, y, x2, y2, n, MUR) ;
     *Score = *Score + 1 ;
+		Effacer_Score () ;
+		set_drawing_color (color_BLACK) ;
+		set_font (font_HELVETICA_12) ;
+		draw_printf (530, 210, "Score : %d", *Score) ;
+		update_graphics () ;
 	}
 while ((*x != (60 * n) - 30) || (*y != 30)) ;
 return ;
@@ -139,6 +144,11 @@ void Mouvement_Jeu_Limites_Invisibles (int *x, int *y, int *x2, int *y2, int n, 
 	{
 		Deplacement_Jeu_Limites_Invisibles (x, y, x2, y2, n, MUR) ;
     *Score = *Score + 1 ;
+		Effacer_Score () ;
+		set_drawing_color (color_BLACK) ;
+		set_font (font_HELVETICA_12) ;
+		draw_printf (530, 210, "Score : %d", *Score) ;
+		update_graphics () ;
 	}
 while ((*x != (60 * n) - 30) || (*y != 30)) ;
 return ;
