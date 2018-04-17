@@ -140,7 +140,7 @@ void Creation_Laby_Auto()
     }
   }
   Grille(n);
-  Grille_Limites(n);
+
   Creer_Curseur(&cursx, &cursy);
 
   while(Verifier_Labyrinthe(CASE, n) == 0)
