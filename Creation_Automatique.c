@@ -136,7 +136,7 @@ void Creation_Laby_Auto()
 
   for(i=0; i<MAX; i++){
     for(j=0; j<MAX; j++){
-      MUR_auto[i][j]=0;
+      MUR_auto[i][j]=1;
     }
   }
   Grille(n);

@@ -130,11 +130,11 @@ do
   Boucle = 1 ;
   }
 
-/*  if (Choix == 2)
+  if (Choix == 2)
     {
       clear_screen();
       Creation_Laby_Auto();
-    }*/
+    }
 
   if (Choix == 3)
     {
