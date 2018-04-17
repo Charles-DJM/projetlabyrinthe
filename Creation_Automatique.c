@@ -8,27 +8,52 @@ int cursx = 30, cursy = 30;
 
 
 
-int Verifier_Cases_Autour(int CASE[MAX][MAX])
+int Verifier_Cases_Autour(int CASE[MAX][MAX], int n)
 //Verifie si les cases autour de la case actuelle sont reliées au labyrinthe
 //Renvoie 1 si toutes les cases autour sont reliées, 0 sinon
 {
   if(CASE[posx][posy+1] == 1 && CASE[posx][posy-1] == 1 && CASE[posx+1][posy] == 1 && CASE[posx-1][posy] == 1)
-    {return 1;}
+    {return 1 ;
+    }
+  if (posx == 0 && CASE[posx][posy+1] == 1 && CASE[posx][posy-1] == 1 && CASE[posx+1][posy] == 1)
+    {return 1 ;
+    }
+  if (posy == 0 && CASE[posx][posy+1] == 1 && CASE[posx+1][posy] == 1 && CASE[posx-1][posy] == 1)
+    {return 1 ;
+    }
+  if (posx == n && CASE[posx][posy+1] == 1 && CASE[posx][posy-1] == 1 && CASE[posx-1][posy] == 1)
+    {return 1 ;
+    }
+  if (posy == n && CASE[posx][posy-1] == 1 && CASE[posx+1][posy] == 1 && CASE[posx-1][posy] == 1)
+    {return 1 ;
+    }
+  if (posx == 0 && posy == 0 && CASE[posx][posy+1] == 1 && CASE[posx+1][posy] == 1)
+    {return 1 ;
+    }
+  if (posx == 0 && posy == n && CASE[posx][posy-1] == 1 && CASE[posx+1][posy] == 1)
+    {return 1 ;
+    }
+  if (posx == n && posy == 0 && CASE[posx][posy+1] == 1 && CASE[posx-1][posy] == 1)
+    {return 1 ;
+    }
+  if (posx == n && posy == n && CASE[posx][posy-1] == 1 && CASE[posx-1][posy] == 1)
+    {return 1 ;
+    }
   return 0;
 }
 
 int Verifier_Labyrinthe(int CASE[MAX][MAX], int n)
 //Renvoie 1 si toutes les cases du labyrinthe sont reliées, 0 sinon
 {
-  int i=0 , j=0;
+  int i, j ;
 
   for(i=0; i<n; i++){
     for(j=0; j<n; j++){
-      if(CASE[i][j]==1)
-        {return 1;}
+      if(CASE[i][j]==0)
+        {return 0;}
     }
   }
-  return 0;
+  return 1;
 }
 
 void Demitour(int CHEMIN[MAX], int nbmouv)
@@ -48,13 +73,13 @@ void Demitour(int CHEMIN[MAX], int nbmouv)
 
 void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int nbmouv, int CASE[MAX][MAX], int n)
 //Crée le labyrinthe en reliant une case de la grille non reliée à la case actuelle
-{
-  if(Verifier_Cases_Autour(CASE)==1)
+{printf("Test 1") ;
+  if(Verifier_Cases_Autour(CASE, n)==1)
    {
      Demitour(CHEMIN, nbmouv);
-     return;
+     return ;
    }
-
+printf("Test 2") ;
    int c;
    c = rand()%4 +1;
 
@@ -117,6 +142,7 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int nbmouv, int CASE[MAX]
            }
          }
        }
+printf("Test 3") ;
 }
 
 void Creation_Laby_Auto()
@@ -139,9 +165,9 @@ void Creation_Laby_Auto()
       MUR_auto[i][j]=1;
     }
   }
-  Grille(n);
+  //Grille(n);
 
-  Creer_Curseur(&cursx, &cursy);
+  //Creer_Curseur(&cursx, &cursy);
 
   while(Verifier_Labyrinthe(CASE, n) == 0)
   {
