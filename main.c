@@ -53,6 +53,7 @@ do
   draw_string (120, 320, "2 : Construction automatique d'un labyrinthe") ;
   draw_string (120, 280, "3 : Jouer a un labyrinthe precedemment sauvegarde") ;
   draw_string (120, 240, "4 : Resolution automatique d'un labyrinthe sauvegarde") ;
+  draw_string (120, 200, "5 : Quitter le jeu") ;
   update_graphics () ;
   Choix = get_key () - 48 ;
 
@@ -95,6 +96,16 @@ do
     update_graphics () ;
     Choix2 = get_key () - 48 ;
 
+    if (Choix2 == 1)
+      // Enregister dans 'Labyrinthe1.txt'
+      {f = fopen ("Labyrinthe1.txt", "w") ;
+      Enregistrement (f, MUR) ;
+      fclose (f) ;
+      f = fopen ("Labyrinthe1n.txt", "w") ;
+      Enregistrement_n (f, n) ;
+      fclose (f) ;
+      }
+
     if (Choix2 == 2)
       // Enregister dans 'Labyrinthe2.txt'
       {f = fopen ("Labyrinthe2.txt", "w") ;
@@ -115,24 +126,15 @@ do
       fclose (f) ;
       }
 
-     else
-       // Enregister dans 'Labyrinthe1.txt' si le Choix2 ne correspond ni à 2 ni à 3
-       {f = fopen ("Labyrinthe1.txt", "w") ;
-       Enregistrement (f, MUR) ;
-       fclose (f) ;
-      f = fopen ("Labyrinthe1n.txt", "w") ;
-      Enregistrement_n (f, n) ;
-      fclose (f) ;
-       }
 
   Boucle = 1 ;
   }
 
-  if (Choix == 2)
+/*  if (Choix == 2)
     {
       clear_screen();
       Creation_Laby_Auto();
-    }
+    }*/
 
   if (Choix == 3)
     {
@@ -148,6 +150,16 @@ do
     draw_string (120, 280, "3 : Chargement du labyrinthe dans 'Labyrinthe3.txt'") ;
     update_graphics () ;
     Choix3 = get_key () - 48 ;
+
+    if (Choix3 == 1)
+      // Charger 'Labyrinthe1.txt'
+      {f = fopen ("Labyrinthe1n.txt", "r") ;
+      Charger_n (f, &n) ;
+      fclose (f) ;
+      f = fopen("Labyrinthe1.txt", "r") ;
+      Charger_Labyrinthe (f, MUR2) ;
+      fclose (f) ;
+      }
 
     if (Choix3 == 2)
       // Charger 'Labyrinthe2.txt'
@@ -169,15 +181,6 @@ do
       fclose (f) ;
       }
 
-     else
-      // Charger 'Labyrinthe1.txt' si le Choix3 ne correspond ni à 2 ni à 3
-      {f = fopen ("Labyrinthe1n.txt", "r") ;
-      Charger_n (f, &n) ;
-      fclose (f) ;
-      f = fopen("Labyrinthe1.txt", "r") ;
-      Charger_Labyrinthe (f, MUR2) ;
-      fclose (f) ;
-      }
 
     clear_screen () ;
     set_drawing_color (color_BLACK) ;
@@ -188,6 +191,18 @@ do
     draw_string (120, 320, "2 : Jouer en decouvrant les limites du labyrinthe") ;
     update_graphics () ;
     Choix4 = get_key () - 48 ;
+
+    if (Choix4 == 1)
+      // Générer labyrinthe et jeu joueur (limite visible)
+      {clear_screen () ;
+      Generer_Labyrinthe (n, MUR2) ;
+      x=30 , y= (n*60)-30, x2 = 0, y2 = n - 1 ;
+      Score = 0 ;
+      Creer_Curseur (&x, &y) ;
+      Mouvement_Jeu_Limites_Visibles (&x, &y, &x2, &y2, n, MUR2, &Score) ;
+      printf("%d\n", Score) ;
+      get_key () ;
+      }
 
     if (Choix4 == 2)
       // Jeu du joueur avec limite invisible
@@ -201,23 +216,15 @@ do
       get_key () ;
       }
 
-    else
-      // Générer labyrinthe et jeu joueur (limite visible)
-      {clear_screen () ;
-      Generer_Labyrinthe (n, MUR2) ;
-      x=30 , y= (n*60)-30, x2 = 0, y2 = n - 1 ;
-      Score = 0 ;
-      Creer_Curseur (&x, &y) ;
-      Mouvement_Jeu_Limites_Visibles (&x, &y, &x2, &y2, n, MUR2, &Score) ;
-      printf("%d\n", Score) ;
-      get_key () ;
-      }
-
     Boucle = 1 ;
   }
 
   if (Choix == 4)
     {}
+
+  if (Choix == 5)
+    {Boucle = 0 ;
+    }
 
 }
 while (Boucle == 1) ;
