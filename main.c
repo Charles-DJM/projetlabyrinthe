@@ -170,11 +170,11 @@ do
 
       if (Choix6 == 1)
         {
-        Creation_Laby_Auto(n) ;
+        Creation_Laby_Auto(n, 1) ;
         }
       if (Choix6 == 2)
         {
-        Creation_Laby_Auto(n) ;
+        Creation_Laby_Auto(n, 0) ;
         }
       }
 
@@ -202,11 +202,11 @@ do
 
       if (Choix6 == 1)
         {
-        Creation_Laby_Auto(n) ;
+        Creation_Laby_Auto(n, 1) ;
         }
       if (Choix6 == 2)
         {
-        Creation_Laby_Auto(n) ;
+        Creation_Laby_Auto(n, 0) ;
         }
       }
 

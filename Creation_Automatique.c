@@ -7,6 +7,7 @@ int posx = 0, posy = 0;
 int cursx = 30, cursy = 30;
 int nbmouv = 0;
 int Choix7 ;
+int Visibilite;
 FILE *f ;
 
 void Effacer_Curseur(int x, int y)
@@ -89,7 +90,7 @@ void Demitour(int CHEMIN[MAX])
       posy = posy -1;
       cursy = cursy -60;
     }
-  Creer_Curseur(&cursx, &cursy);
+  if(Visibilite){Creer_Curseur(&cursx, &cursy);}
   update_graphics () ;
   nbmouv = nbmouv -1;
 }
@@ -120,7 +121,7 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
 
           Effacer_Curseur(cursx, cursy);
           cursy = cursy -60;
-          Creer_Curseur(&cursx, &cursy);
+          if(Visibilite){Creer_Curseur(&cursx, &cursy);}
           update_graphics();
        }
       }
@@ -140,7 +141,7 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
 
            Effacer_Curseur(cursx, cursy);
            cursx = cursx -60;
-           Creer_Curseur(&cursx, &cursy);
+           if(Visibilite){Creer_Curseur(&cursx, &cursy);}
          }
        }
      }
@@ -159,7 +160,7 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
 
             Effacer_Curseur(cursx, cursy);
             cursx = cursx +60;
-            Creer_Curseur(&cursx, &cursy);
+            if(Visibilite){Creer_Curseur(&cursx, &cursy);}
           }
         }
       }
@@ -178,19 +179,19 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
 
              Effacer_Curseur(cursx, cursy);
              cursy = cursy +60;
-             Creer_Curseur(&cursx, &cursy);
-                        }
+             if(Visibilite){Creer_Curseur(&cursx, &cursy);}
+            }
          }
        }
 }
 
-void Creation_Laby_Auto(int n)
+void Creation_Laby_Auto(int n, int Visu)
 {
   int i, j;
   int MUR_auto[MAX][MAX]; //tableau mur habituel
   int CASE[MAX][MAX]; //Sert a savoir si une case du laby est réliée
   int CHEMIN[MAX]; //Permet de connaitre les mouvements précédents
-
+  Visibilite = Visu;
   for(i=0; i<=n; i++){
     for(j=0; j<=n; j++){
       CASE[i][j]=0;
@@ -207,12 +208,12 @@ void Creation_Laby_Auto(int n)
   Grille(n);
 
   Creer_Curseur(&cursx, &cursy);
-
+  if(!Visibilite){clear_screen();}
   while(Verifier_Labyrinthe(CASE, n) == 0)
   {
     Creation(CHEMIN, MUR_auto, CASE, n);
     update_graphics();
-    get_key();
+    usleep(50);
   }
   nbmouv = 0;
   posx = 0;
