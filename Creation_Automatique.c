@@ -87,7 +87,6 @@ void Demitour(int CHEMIN[MAX])
       posy = posy -1;
       cursy = cursy -60;
     }
-  printf("\n-----demitour-----\n" );
   Creer_Curseur(&cursx, &cursy);
   update_graphics () ;
   nbmouv = nbmouv -1;
@@ -122,7 +121,6 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
           cursy = cursy -60;
           Creer_Curseur(&cursx, &cursy);
           update_graphics();
-          printf("go bas\n" );
        }
       }
     }
@@ -143,7 +141,6 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
            Effacer_Curseur(cursx, cursy);
            cursx = cursx -60;
            Creer_Curseur(&cursx, &cursy);
-           printf("go gauche\n" );
          }
        }
      }
@@ -164,8 +161,6 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
             Effacer_Curseur(cursx, cursy);
             cursx = cursx +60;
             Creer_Curseur(&cursx, &cursy);
-            printf("go droite\n" );
-
           }
         }
       }
@@ -186,17 +181,16 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
              Effacer_Curseur(cursx, cursy);
              cursy = cursy +60;
              Creer_Curseur(&cursx, &cursy);
-             printf("go haut\n" );
-           }
+                        }
          }
        }
 }
 
 void Creation_Laby_Auto()
 {
-  //printf("De quelle taille doit être le labyrinthe?\n");
-  int n = 6, i, j;
-  //scanf("%d", &n);
+  printf("De quelle taille doit être le labyrinthe?\n");
+  int n , i, j;
+  scanf("%d", &n);
   int MUR_auto[MAX][MAX]; //tableau mur habituel
   int CASE[MAX][MAX]; //Sert a savoir si une case du laby est réliée
   int CHEMIN[MAX]; //Permet de connaitre les mouvements précédents
