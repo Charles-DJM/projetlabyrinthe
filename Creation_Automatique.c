@@ -5,6 +5,7 @@
 
 int posx = 0, posy = 0;
 int cursx = 30, cursy = 30;
+int nbmouv = 0;
 
 void Effacer_Curseur(int x, int y)
 {
@@ -27,22 +28,22 @@ int Verifier_Cases_Autour(int CASE[MAX][MAX], int n)
   if (posy == 0 && CASE[posx][posy+1] == 1 && CASE[posx+1][posy] == 1 && CASE[posx-1][posy] == 1)
     {return 1 ;
     }
-  if (posx == n && CASE[posx][posy+1] == 1 && CASE[posx][posy-1] == 1 && CASE[posx-1][posy] == 1)
+  if (posx == n-1 && CASE[posx][posy+1] == 1 && CASE[posx][posy-1] == 1 && CASE[posx-1][posy] == 1)
     {return 1 ;
     }
-  if (posy == n && CASE[posx][posy-1] == 1 && CASE[posx+1][posy] == 1 && CASE[posx-1][posy] == 1)
+  if (posy == n-1 && CASE[posx][posy-1] == 1 && CASE[posx+1][posy] == 1 && CASE[posx-1][posy] == 1)
     {return 1 ;
     }
   if (posx == 0 && posy == 0 && CASE[posx][posy+1] == 1 && CASE[posx+1][posy] == 1)
     {return 1 ;
     }
-  if (posx == 0 && posy == n && CASE[posx][posy-1] == 1 && CASE[posx+1][posy] == 1)
+  if (posx == 0 && posy == n-1 && CASE[posx][posy-1] == 1 && CASE[posx+1][posy] == 1)
     {return 1 ;
     }
-  if (posx == n && posy == 0 && CASE[posx][posy+1] == 1 && CASE[posx-1][posy] == 1)
+  if (posx == n-1 && posy == 0 && CASE[posx][posy+1] == 1 && CASE[posx-1][posy] == 1)
     {return 1 ;
     }
-  if (posx == n && posy == n && CASE[posx][posy-1] == 1 && CASE[posx-1][posy] == 1)
+  if (posx == n-1 && posy == n-1 && CASE[posx][posy-1] == 1 && CASE[posx-1][posy] == 1)
     {return 1 ;
     }
   return 0;
@@ -62,7 +63,7 @@ int Verifier_Labyrinthe(int CASE[MAX][MAX], int n)
   return 1;
 }
 
-void Demitour(int CHEMIN[MAX], int nbmouv)
+void Demitour(int CHEMIN[MAX])
 //Permet a la fonction CreationLabyrinthe de revenir en dans la case précédente
 {
   Effacer_Curseur(cursx, cursy);
@@ -92,17 +93,18 @@ void Demitour(int CHEMIN[MAX], int nbmouv)
   nbmouv = nbmouv -1;
 }
 
-void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int nbmouv, int CASE[MAX][MAX], int n)
+void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n)
 //Crée le labyrinthe en reliant une case de la grille non reliée à la case actuelle
+{
   if(Verifier_Cases_Autour(CASE, n)==1)
    {
-     Demitour(CHEMIN, nbmouv);
+     Demitour(CHEMIN);
      return ;
    }
 
    int c;
    c = rand()%4 +1;
-   printf("direction est %d\n", c);
+   //printf("direction est %d\n", c);
    if(c==1)
     {
       if(posy-1>=0)
@@ -113,7 +115,7 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int nbmouv, int CASE[MAX]
           CASE[posx][posy] = 1;
           MUR_auto[posx][posy * 2] = 0;
           CHEMIN[nbmouv] = c;
-          nbmouv++;
+          nbmouv = nbmouv +1 ;
           Supprimer_Murs(2, cursx, cursy, posx, posy, MUR_auto);
           Effacer_Curseur(cursx, cursy);
           cursy = cursy -60;
@@ -134,7 +136,7 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int nbmouv, int CASE[MAX]
            CASE[posx][posy] = 1;
            MUR_auto[posx][posy*2 +1] = 0;
            CHEMIN[nbmouv] = c;
-           nbmouv++;
+           nbmouv = nbmouv +1 ;
            Supprimer_Murs(4, cursx, cursy, posx, posy, MUR_auto);
            Effacer_Curseur(cursx, cursy);
            cursx = cursx -60;
@@ -154,7 +156,7 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int nbmouv, int CASE[MAX]
             CASE[posx][posy] = 1;
             MUR_auto[posx+1][2*posy +1] = 0;
             CHEMIN[nbmouv] = c;
-            nbmouv++;
+            nbmouv = nbmouv +1 ;
             Supprimer_Murs(6, cursx, cursy, posx, posy, MUR_auto);
             Effacer_Curseur(cursx, cursy);
             cursx = cursx +60;
@@ -175,7 +177,7 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int nbmouv, int CASE[MAX]
              CASE[posx][posy] = 1;
              MUR_auto[posx][2*posy+2] = 0;
              CHEMIN[nbmouv] = c;
-             nbmouv++;
+             nbmouv = nbmouv +1 ;
              Supprimer_Murs(8, cursx, cursy, posx, posy, MUR_auto);
              Effacer_Curseur(cursx, cursy);
              cursy = cursy +60;
@@ -189,7 +191,7 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int nbmouv, int CASE[MAX]
 void Creation_Laby_Auto()
 {
   printf("De quelle taille doit être le labyrinthe?\n");
-  int n, i, j, nbmouv =0;
+  int n, i, j;
   scanf("%d", &n);
   int MUR_auto[MAX][MAX]; //tableau mur habituel
   int CASE[MAX][MAX]; //Sert a savoir si une case du laby est réliée
@@ -214,8 +216,9 @@ void Creation_Laby_Auto()
 
   while(Verifier_Labyrinthe(CASE, n) == 0)
   {
-    Creation(CHEMIN, MUR_auto, nbmouv, CASE, n);
+    Creation(CHEMIN, MUR_auto, CASE, n);
     update_graphics();
+    printf("\n nbmouv = %d\n",nbmouv );
     get_key();
   }
 
