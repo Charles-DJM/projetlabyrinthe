@@ -148,6 +148,15 @@ do
       {
       // Taille du labyrinthe aléatoire
       n = (rand() % 6) + 3 ;
+      clear_screen () ;
+      set_drawing_color (color_BLACK) ;
+      set_font (font_HELVETICA_18) ;
+      draw_string (120, 290, "Le labyrinthe qui va etre construit sera un carre") ;
+      set_font (font_HELVETICA_12) ;
+		  draw_printf (120, 250, "Le parametre n correspondant aux nombres de lignes/colonnes est %d", n) ;
+		  draw_printf (200, 210, "Pour continuer, appuyez sur une touche", n) ;
+      update_graphics () ;
+      get_key () ;
 
       clear_screen () ;
       set_drawing_color (color_BLACK) ;
