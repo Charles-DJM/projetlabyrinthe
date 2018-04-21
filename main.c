@@ -14,7 +14,7 @@
 #define MAX 100
 
 int main (void)
-{int i, j, Score, Choix, Choix2, Choix3, Choix4, Choix5, Boucle ;
+{int i, j, Score, Choix, Choix2, Choix3, Choix4, Choix5, Choix6, Boucle ;
 int x, y, x2, y2, n ;
 FILE *f ;
 srand(time(0));
@@ -146,12 +146,46 @@ do
 
     if (Choix5 == 1)
       {
-        clear_screen();
+      clear_screen () ;
+      set_drawing_color (color_BLACK) ;
+      set_font (font_HELVETICA_18) ;
+      draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+      set_font (font_HELVETICA_12) ;
+      draw_string (120, 360, "1 : Voir la creation automatique") ;
+      draw_string (120, 320, "2 : Passer directement au choix de sauvegarde") ;
+      update_graphics () ;
+      Choix6 = get_key () - 48 ;
+
+      if (Choix6 == 1)
+        {
         Creation_Laby_Auto() ;
+        }
+      if (Choix6 == 2)
+        {
+        Creation_Laby_Auto() ;
+        }
       }
 
     if (Choix5 == 2)
-      {Creation_Laby_Auto() ;
+      {
+      clear_screen () ;
+      set_drawing_color (color_BLACK) ;
+      set_font (font_HELVETICA_18) ;
+      draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+      set_font (font_HELVETICA_12) ;
+      draw_string (120, 360, "1 : Voir la creation automatique") ;
+      draw_string (120, 320, "2 : Passer directement au choix de sauvegarde") ;
+      update_graphics () ;
+      Choix6 = get_key () - 48 ;
+
+      if (Choix6 == 1)
+        {
+        Creation_Laby_Auto() ;
+        }
+      if (Choix6 == 2)
+        {
+        Creation_Laby_Auto() ;
+        }
       }
 
 

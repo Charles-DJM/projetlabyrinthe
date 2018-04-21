@@ -6,6 +6,8 @@
 int posx = 0, posy = 0;
 int cursx = 30, cursy = 30;
 int nbmouv = 0;
+int Choix7 ;
+FILE *f ;
 
 void Effacer_Curseur(int x, int y)
 {
@@ -110,9 +112,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
       {
         if(CASE[posx][posy-1] == 0)
         {
+          MUR_auto[posx][posy * 2] = 0;
           posy = posy -1;
           CASE[posx][posy] = 1;
-          MUR_auto[posx][posy * 2] = 0;
           nbmouv = nbmouv +1 ;
           CHEMIN[nbmouv] = c;
 
@@ -131,9 +133,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
        {
          if(CASE[posx-1][posy] == 0)
          {
+           MUR_auto[posx][posy*2 +1] = 0;
            posx = posx -1;
            CASE[posx][posy] = 1;
-           MUR_auto[posx][posy*2 +1] = 0;
            nbmouv = nbmouv +1 ;
            CHEMIN[nbmouv] = c;
 
@@ -151,9 +153,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
         {
           if(CASE[posx+1][posy] == 0)
           {
+            MUR_auto[posx+1][2*posy +1] = 0;
             posx = posx +1;
             CASE[posx][posy] = 1;
-            MUR_auto[posx+1][2*posy +1] = 0;
             nbmouv = nbmouv +1 ;
             CHEMIN[nbmouv] = c;
 
@@ -171,9 +173,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
          {
           if(CASE[posx][posy+1] == 0)
            {
+             MUR_auto[posx][2*posy+2] = 0;
              posy = posy +1;
              CASE[posx][posy] = 1;
-             MUR_auto[posx][2*posy+2] = 0;
              nbmouv = nbmouv +1 ;
              CHEMIN[nbmouv] = c;
 
@@ -224,4 +226,45 @@ void Creation_Laby_Auto()
   cursx = 30;
   cursy = 30;
   get_key();
+
+    clear_screen () ;
+    set_drawing_color (color_BLACK) ;
+    set_font (font_HELVETICA_18) ;
+    draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_font (font_HELVETICA_12) ;
+    draw_string (120, 360, "1 : Sauvegarde du labyrinthe dans 'Labyrinthe1.txt'") ;
+    draw_string (120, 320, "2 : Sauvegarde du labyrinthe dans 'Labyrinthe2.txt'") ;
+    draw_string (120, 280, "3 : Sauvegarde du labyrinthe dans 'Labyrinthe3.txt'") ;
+    update_graphics () ;
+    Choix7 = get_key () - 48 ;
+
+    if (Choix7 == 1)
+      // Enregister dans 'Labyrinthe1.txt'
+      {f = fopen ("Labyrinthe1.txt", "w") ;
+      Enregistrement (f, MUR_auto) ;
+      fclose (f) ;
+      f = fopen ("Labyrinthe1n.txt", "w") ;
+      Enregistrement_n (f, n) ;
+      fclose (f) ;
+      }
+
+    if (Choix7 == 2)
+      // Enregister dans 'Labyrinthe2.txt'
+      {f = fopen ("Labyrinthe2.txt", "w") ;
+      Enregistrement (f, MUR_auto) ;
+      fclose (f) ;
+      f = fopen ("Labyrinthe2n.txt", "w") ;
+      Enregistrement_n (f, n) ;
+      fclose (f) ;
+      }
+
+    if (Choix7 == 3)
+      // Enregister dans 'Labyrinthe3.txt'
+      {f = fopen ("Labyrinthe3.txt", "w") ;
+      Enregistrement (f, MUR_auto) ;
+      fclose (f) ;
+      f = fopen ("Labyrinthe3n.txt", "w") ;
+      Enregistrement_n (f, n) ;
+      fclose (f) ;
+      }
 }
