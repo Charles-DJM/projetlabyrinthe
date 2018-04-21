@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "libgraphique.h"
 #include "Fonctions.c"
@@ -144,7 +145,9 @@ do
     Choix5 = get_key () - 48 ;
 
     if (Choix5 == 1)
-      {Creation_Laby_Auto() ;
+      {
+        clear_screen();
+        Creation_Laby_Auto() ;
       }
 
     if (Choix5 == 2)

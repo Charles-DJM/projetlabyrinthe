@@ -6,7 +6,13 @@
 int posx = 0, posy = 0;
 int cursx = 30, cursy = 30;
 
-
+void Effacer_Curseur(int x, int y)
+{
+  set_drawing_color(color_WHITE);
+	draw_circle_full(x, y, 15);
+	update_graphics () ;
+	return ;
+}
 
 int Verifier_Cases_Autour(int CASE[MAX][MAX], int n)
 //Verifie si les cases autour de la case actuelle sont reliées au labyrinthe
@@ -67,7 +73,8 @@ void Demitour(int CHEMIN[MAX], int nbmouv)
     {posx = posx -1;}
   if(CHEMIN[nbmouv-1] == 4)
     {posy = posy -1;}
-
+  printf("demitour\n" );
+  update_graphics () ;
   nbmouv = nbmouv -1;
 }
 
@@ -79,10 +86,10 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int nbmouv, int CASE[MAX]
      Demitour(CHEMIN, nbmouv);
      return ;
    }
-printf("Test 2") ;
+
    int c;
    c = rand()%4 +1;
-
+   printf("direction est %d", c);
    if(c==1)
     {
       if(posy-1>=0)
@@ -94,6 +101,11 @@ printf("Test 2") ;
           MUR_auto[posx][posy * 2] = 0;
           CHEMIN[nbmouv] = c;
           nbmouv++;
+          Supprimer_Murs(2, cursx, cursy, posx, posy, MUR_auto);
+          Effacer_Curseur(cursx, cursy);
+          cursy = cursy -30;
+          Creer_Curseur(&cursx, &cursy);
+          printf("go bas\n" );
         }
       }
     }
@@ -109,6 +121,11 @@ printf("Test 2") ;
            MUR_auto[posx][posy*2 +1] = 0;
            CHEMIN[nbmouv] = c;
            nbmouv++;
+           Supprimer_Murs(4, cursx, cursy, posx, posy, MUR_auto);
+           Effacer_Curseur(cursx, cursy);
+           cursx = cursx -30;
+           Creer_Curseur(&cursx, &cursy);
+           printf("go gauche\n" );
          }
        }
      }
@@ -124,6 +141,12 @@ printf("Test 2") ;
             MUR_auto[posx+1][2*posy +1] = 0;
             CHEMIN[nbmouv] = c;
             nbmouv++;
+            Supprimer_Murs(6, cursx, cursy, posx, posy, MUR_auto);
+            Effacer_Curseur(cursx, cursy);
+            cursx = cursx +30;
+            Creer_Curseur(&cursx, &cursy);
+            printf("go droite\n" );
+
           }
         }
       }
@@ -139,6 +162,11 @@ printf("Test 2") ;
              MUR_auto[posx][2*posy+2] = 0;
              CHEMIN[nbmouv] = c;
              nbmouv++;
+             Supprimer_Murs(8, cursx, cursy, posx, posy, MUR_auto);
+             Effacer_Curseur(cursx, cursy);
+             cursy = cursy +30;
+             Creer_Curseur(&cursx, &cursy);
+             printf("go haut\n" );
            }
          }
        }
@@ -165,13 +193,19 @@ void Creation_Laby_Auto()
       MUR_auto[i][j]=1;
     }
   }
-  //Grille(n);
+  clear_screen();
+  Grille(n);
 
-  //Creer_Curseur(&cursx, &cursy);
+  Creer_Curseur(&cursx, &cursy);
 
   while(Verifier_Labyrinthe(CASE, n) == 0)
   {
     Creation(CHEMIN, MUR_auto, nbmouv, CASE, n);
+    update_graphics();
+    printf("ecrit\n" );
+    get_key();
   }
+
   printf("fin creation auto");
+  get_key();
 }
