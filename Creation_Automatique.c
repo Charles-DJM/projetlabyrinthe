@@ -218,8 +218,6 @@ void Creation_Laby_Auto()
     update_graphics();
     get_key();
   }
-
-  printf("fin creation auto");
   nbmouv = 0;
   posx = 0;
   posy = 0;
