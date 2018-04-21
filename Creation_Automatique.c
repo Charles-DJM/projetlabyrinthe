@@ -216,7 +216,6 @@ void Creation_Laby_Auto()
   {
     Creation(CHEMIN, MUR_auto, CASE, n);
     update_graphics();
-    printf("\n nbmouv = %d\n",nbmouv );
     get_key();
   }
 
