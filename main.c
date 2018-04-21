@@ -77,6 +77,7 @@ do
     // Créer labyrinthe Interactivement
     Grille (n) ;
     Creer_Curseur (&x, &y) ;
+    Case_Arrivee (n) ;
     Mouvement_Creation (&x, &y, &x2, &y2, n, MUR) ;
     set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_12) ;
@@ -174,7 +175,7 @@ do
         }
       if (Choix6 == 2)
         {
-        Creation_Laby_Auto(n, 0) ;
+        Creation_Laby_Auto_Passer(n, 0) ;
         }
       }
 
@@ -206,7 +207,7 @@ do
         }
       if (Choix6 == 2)
         {
-        Creation_Laby_Auto(n, 0) ;
+        Creation_Laby_Auto_Passer(n, 0) ;
         }
       }
 
@@ -273,6 +274,7 @@ do
     if (Choix4 == 1)
       // Générer labyrinthe et jeu joueur (limite visible)
       {clear_screen () ;
+      Case_Arrivee (n) ;
       Generer_Labyrinthe (n, MUR2) ;
       x=30 , y= (n*60)-30, x2 = 0, y2 = n - 1 ;
       Score = 0 ;
@@ -290,6 +292,7 @@ do
     if (Choix4 == 2)
       // Jeu du joueur avec limite invisible
       {clear_screen () ;
+      Case_Arrivee (n) ;
       Grille_Limites (n) ;
       x=30 , y= (n*60)-30, x2 = 0, y2 = n - 1 ;
       Score = 0 ;

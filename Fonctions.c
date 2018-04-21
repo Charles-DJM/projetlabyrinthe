@@ -51,3 +51,10 @@ draw_rectangle_full (530, 100, 700, 500) ;
 update_graphics () ;
 return ;
 }
+
+void Case_Arrivee (int n)
+{set_drawing_color(color_GREEN) ;
+draw_rectangle_full (((n - 1) * 60) + 1, 1, (n * 60) - 1, 59) ;
+update_graphics () ;
+return ;
+}

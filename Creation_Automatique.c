@@ -268,3 +268,80 @@ void Creation_Laby_Auto(int n, int Visu)
       fclose (f) ;
       }
 }
+
+void Creation_Laby_Auto_Passer(int n, int Visu)
+{
+  int i, j;
+  int MUR_auto[MAX][MAX]; //tableau mur habituel
+  int CASE[MAX][MAX]; //Sert a savoir si une case du laby est réliée
+  int CHEMIN[MAX]; //Permet de connaitre les mouvements précédents
+  Visibilite = Visu;
+  for(i=0; i<=n; i++){
+    for(j=0; j<=n; j++){
+      CASE[i][j]=0;
+    }
+  }
+
+  for(i=0; i<MAX; i++){
+    for(j=0; j<MAX; j++){
+      MUR_auto[i][j]=1;
+    }
+  }
+  CASE[0][0] = 1;
+  clear_screen();
+
+  Creer_Curseur(&cursx, &cursy);
+  if(!Visibilite){clear_screen();}
+  while(Verifier_Labyrinthe(CASE, n) == 0)
+  {
+    Creation(CHEMIN, MUR_auto, CASE, n);
+    update_graphics();
+    usleep(50);
+  }
+  nbmouv = 0;
+  posx = 0;
+  posy = 0;
+  cursx = 30;
+  cursy = 30;
+
+    clear_screen () ;
+    set_drawing_color (color_BLACK) ;
+    set_font (font_HELVETICA_18) ;
+    draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_font (font_HELVETICA_12) ;
+    draw_string (120, 360, "1 : Sauvegarde du labyrinthe dans 'Labyrinthe1.txt'") ;
+    draw_string (120, 320, "2 : Sauvegarde du labyrinthe dans 'Labyrinthe2.txt'") ;
+    draw_string (120, 280, "3 : Sauvegarde du labyrinthe dans 'Labyrinthe3.txt'") ;
+    update_graphics () ;
+    Choix7 = get_key () - 48 ;
+
+    if (Choix7 == 1)
+      // Enregister dans 'Labyrinthe1.txt'
+      {f = fopen ("Labyrinthe1.txt", "w") ;
+      Enregistrement (f, MUR_auto) ;
+      fclose (f) ;
+      f = fopen ("Labyrinthe1n.txt", "w") ;
+      Enregistrement_n (f, n) ;
+      fclose (f) ;
+      }
+
+    if (Choix7 == 2)
+      // Enregister dans 'Labyrinthe2.txt'
+      {f = fopen ("Labyrinthe2.txt", "w") ;
+      Enregistrement (f, MUR_auto) ;
+      fclose (f) ;
+      f = fopen ("Labyrinthe2n.txt", "w") ;
+      Enregistrement_n (f, n) ;
+      fclose (f) ;
+      }
+
+    if (Choix7 == 3)
+      // Enregister dans 'Labyrinthe3.txt'
+      {f = fopen ("Labyrinthe3.txt", "w") ;
+      Enregistrement (f, MUR_auto) ;
+      fclose (f) ;
+      f = fopen ("Labyrinthe3n.txt", "w") ;
+      Enregistrement_n (f, n) ;
+      fclose (f) ;
+      }
+}
