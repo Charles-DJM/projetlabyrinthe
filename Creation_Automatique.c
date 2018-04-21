@@ -114,8 +114,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
           posy = posy -1;
           CASE[posx][posy] = 1;
           MUR_auto[posx][posy * 2] = 0;
-          CHEMIN[nbmouv] = c;
           nbmouv = nbmouv +1 ;
+          CHEMIN[nbmouv] = c;
+
           Supprimer_Murs(2, cursx, cursy, posx, posy, MUR_auto);
           Effacer_Curseur(cursx, cursy);
           cursy = cursy -60;
@@ -135,8 +136,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
            posx = posx -1;
            CASE[posx][posy] = 1;
            MUR_auto[posx][posy*2 +1] = 0;
-           CHEMIN[nbmouv] = c;
            nbmouv = nbmouv +1 ;
+           CHEMIN[nbmouv] = c;
+
            Supprimer_Murs(4, cursx, cursy, posx, posy, MUR_auto);
            Effacer_Curseur(cursx, cursy);
            cursx = cursx -60;
@@ -155,8 +157,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
             posx = posx +1;
             CASE[posx][posy] = 1;
             MUR_auto[posx+1][2*posy +1] = 0;
-            CHEMIN[nbmouv] = c;
             nbmouv = nbmouv +1 ;
+            CHEMIN[nbmouv] = c;
+
             Supprimer_Murs(6, cursx, cursy, posx, posy, MUR_auto);
             Effacer_Curseur(cursx, cursy);
             cursx = cursx +60;
@@ -176,8 +179,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
              posy = posy +1;
              CASE[posx][posy] = 1;
              MUR_auto[posx][2*posy+2] = 0;
-             CHEMIN[nbmouv] = c;
              nbmouv = nbmouv +1 ;
+             CHEMIN[nbmouv] = c;
+
              Supprimer_Murs(8, cursx, cursy, posx, posy, MUR_auto);
              Effacer_Curseur(cursx, cursy);
              cursy = cursy +60;
@@ -190,9 +194,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
 
 void Creation_Laby_Auto()
 {
-  printf("De quelle taille doit être le labyrinthe?\n");
-  int n, i, j;
-  scanf("%d", &n);
+  //printf("De quelle taille doit être le labyrinthe?\n");
+  int n = 6, i, j;
+  //scanf("%d", &n);
   int MUR_auto[MAX][MAX]; //tableau mur habituel
   int CASE[MAX][MAX]; //Sert a savoir si une case du laby est réliée
   int CHEMIN[MAX]; //Permet de connaitre les mouvements précédents
@@ -223,5 +227,10 @@ void Creation_Laby_Auto()
   }
 
   printf("fin creation auto");
+  nbmouv = 0;
+  posx = 0;
+  posy = 0;
+  cursx = 30;
+  cursy = 30;
   get_key();
 }
