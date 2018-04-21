@@ -146,6 +146,9 @@ do
 
     if (Choix5 == 1)
       {
+      // Taille du labyrinthe aléatoire
+      n = (rand() % 6) + 3 ;
+
       clear_screen () ;
       set_drawing_color (color_BLACK) ;
       set_font (font_HELVETICA_18) ;
@@ -158,16 +161,26 @@ do
 
       if (Choix6 == 1)
         {
-        Creation_Laby_Auto() ;
+        Creation_Laby_Auto(n) ;
         }
       if (Choix6 == 2)
         {
-        Creation_Laby_Auto() ;
+        Creation_Laby_Auto(n) ;
         }
       }
 
     if (Choix5 == 2)
       {
+      // Taille du labyrinthe
+      clear_screen () ;
+      set_drawing_color (color_BLACK) ;
+      set_font (font_HELVETICA_18) ;
+      draw_string (100, 290, "Le labyrinthe que vous allez construire sera un carre") ;
+      set_font (font_HELVETICA_12) ;
+      draw_string (120, 250, "Saisir le parametre n correspondant aux nombres de lignes/colonnes") ;
+      update_graphics () ;
+      n = get_key () - 48 ;
+
       clear_screen () ;
       set_drawing_color (color_BLACK) ;
       set_font (font_HELVETICA_18) ;
@@ -180,11 +193,11 @@ do
 
       if (Choix6 == 1)
         {
-        Creation_Laby_Auto() ;
+        Creation_Laby_Auto(n) ;
         }
       if (Choix6 == 2)
         {
-        Creation_Laby_Auto() ;
+        Creation_Laby_Auto(n) ;
         }
       }
 

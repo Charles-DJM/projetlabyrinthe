@@ -112,13 +112,12 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
       {
         if(CASE[posx][posy-1] == 0)
         {
-          MUR_auto[posx][posy * 2] = 0;
+          Supprimer_Murs(2, cursx, cursy, posx, posy, MUR_auto);
           posy = posy -1;
           CASE[posx][posy] = 1;
           nbmouv = nbmouv +1 ;
           CHEMIN[nbmouv] = c;
 
-          Supprimer_Murs(2, cursx, cursy, posx, posy, MUR_auto);
           Effacer_Curseur(cursx, cursy);
           cursy = cursy -60;
           Creer_Curseur(&cursx, &cursy);
@@ -133,13 +132,12 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
        {
          if(CASE[posx-1][posy] == 0)
          {
-           MUR_auto[posx][posy*2 +1] = 0;
+           Supprimer_Murs(4, cursx, cursy, posx, posy, MUR_auto);
            posx = posx -1;
            CASE[posx][posy] = 1;
            nbmouv = nbmouv +1 ;
            CHEMIN[nbmouv] = c;
 
-           Supprimer_Murs(4, cursx, cursy, posx, posy, MUR_auto);
            Effacer_Curseur(cursx, cursy);
            cursx = cursx -60;
            Creer_Curseur(&cursx, &cursy);
@@ -153,13 +151,12 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
         {
           if(CASE[posx+1][posy] == 0)
           {
-            MUR_auto[posx+1][2*posy +1] = 0;
+            Supprimer_Murs(6, cursx, cursy, posx, posy, MUR_auto);
             posx = posx +1;
-            CASE[posx][posy] = 1;
+            CASE[posx][posy] = 1 ;
             nbmouv = nbmouv +1 ;
             CHEMIN[nbmouv] = c;
 
-            Supprimer_Murs(6, cursx, cursy, posx, posy, MUR_auto);
             Effacer_Curseur(cursx, cursy);
             cursx = cursx +60;
             Creer_Curseur(&cursx, &cursy);
@@ -173,13 +170,12 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
          {
           if(CASE[posx][posy+1] == 0)
            {
-             MUR_auto[posx][2*posy+2] = 0;
+             Supprimer_Murs(8, cursx, cursy, posx, posy, MUR_auto);
              posy = posy +1;
              CASE[posx][posy] = 1;
              nbmouv = nbmouv +1 ;
              CHEMIN[nbmouv] = c;
 
-             Supprimer_Murs(8, cursx, cursy, posx, posy, MUR_auto);
              Effacer_Curseur(cursx, cursy);
              cursy = cursy +60;
              Creer_Curseur(&cursx, &cursy);
@@ -188,11 +184,9 @@ void Creation(int CHEMIN[MAX], int MUR_auto[MAX][MAX], int CASE[MAX][MAX], int n
        }
 }
 
-void Creation_Laby_Auto()
+void Creation_Laby_Auto(int n)
 {
-  printf("De quelle taille doit être le labyrinthe?\n");
-  int n , i, j;
-  scanf("%d", &n);
+  int i, j;
   int MUR_auto[MAX][MAX]; //tableau mur habituel
   int CASE[MAX][MAX]; //Sert a savoir si une case du laby est réliée
   int CHEMIN[MAX]; //Permet de connaitre les mouvements précédents
@@ -225,6 +219,11 @@ void Creation_Laby_Auto()
   posy = 0;
   cursx = 30;
   cursy = 30;
+  set_drawing_color (color_BLACK) ;
+  set_font (font_HELVETICA_12) ;
+  draw_string (530, 210, "Pour finir,") ;
+  draw_string (490, 170, "appuyez sur une touche") ;
+  update_graphics () ;
   get_key();
 
     clear_screen () ;
