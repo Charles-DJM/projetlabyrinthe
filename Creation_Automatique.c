@@ -228,9 +228,10 @@ void Creation_Laby_Auto(int n, int Visu)
   get_key();
 
     clear_screen () ;
-    set_drawing_color (color_BLACK) ;
+    set_drawing_color (color_RED) ;
     set_font (font_HELVETICA_18) ;
     draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 360, "1 : Sauvegarde du labyrinthe dans 'Labyrinthe1.txt'") ;
     draw_string (120, 320, "2 : Sauvegarde du labyrinthe dans 'Labyrinthe2.txt'") ;
@@ -305,9 +306,10 @@ void Creation_Laby_Auto_Passer(int n, int Visu)
   cursy = 30;
 
     clear_screen () ;
-    set_drawing_color (color_BLACK) ;
+    set_drawing_color (color_RED) ;
     set_font (font_HELVETICA_18) ;
     draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 360, "1 : Sauvegarde du labyrinthe dans 'Labyrinthe1.txt'") ;
     draw_string (120, 320, "2 : Sauvegarde du labyrinthe dans 'Labyrinthe2.txt'") ;

@@ -24,9 +24,12 @@ start_graphics() ;
 // Menu graphique
 set_drawing_color (color_BLACK) ;
 set_font (font_HELVETICA_18) ;
-draw_string (240, 290, "The Maze Runner") ;
+draw_string (190, 330, "T H E    M A Z E    R U N N E R") ;
+draw_rectangle (130, 300, 510, 380) ;
+set_drawing_color (color_RED) ;
 draw_string (160, 250, "CLERC Billy") ;
 draw_string (320, 250, "DE JAHAM Charles") ;
+set_drawing_color (color_BLACK) ;
 set_font (font_HELVETICA_12) ;
 draw_string (200, 210, "Pour commencer, appuyez sur une touche") ;
 update_graphics () ;
@@ -46,9 +49,10 @@ do
 
   // Menu 1
   clear_screen () ;
-  set_drawing_color (color_BLACK) ;
+  set_drawing_color (color_RED) ;
   set_font (font_HELVETICA_18) ;
   draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+  set_drawing_color (color_BLACK) ;
   set_font (font_HELVETICA_12) ;
   draw_string (120, 360, "1 : Construction interactive d'un labyrinthe") ;
   draw_string (120, 320, "2 : Construction automatique d'un labyrinthe") ;
@@ -62,9 +66,10 @@ do
   {
     // Taille du labyrinthe
     clear_screen () ;
-    set_drawing_color (color_BLACK) ;
+    set_drawing_color (color_RED) ;
     set_font (font_HELVETICA_18) ;
     draw_string (100, 290, "Le labyrinthe que vous allez construire sera un carre") ;
+    set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 250, "Saisir le parametre n correspondant aux nombres de lignes/colonnes") ;
     update_graphics () ;
@@ -88,9 +93,10 @@ do
 
     // Choix emplacement de sauvegarde
     clear_screen () ;
-    set_drawing_color (color_BLACK) ;
+    set_drawing_color (color_RED) ;
     set_font (font_HELVETICA_18) ;
     draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 360, "1 : Sauvegarde du labyrinthe dans 'Labyrinthe1.txt'") ;
     draw_string (120, 320, "2 : Sauvegarde du labyrinthe dans 'Labyrinthe2.txt'") ;
@@ -136,9 +142,10 @@ do
     {
     // CHoix entre n aléatoire ou prédéfinis
     clear_screen () ;
-    set_drawing_color (color_BLACK) ;
+    set_drawing_color (color_RED) ;
     set_font (font_HELVETICA_18) ;
     draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 360, "1 : Parametre n choisit aleatoirement") ;
     draw_string (120, 320, "2 : Choisir parametre n") ;
@@ -150,9 +157,10 @@ do
       // Taille du labyrinthe aléatoire
       n = (rand() % 6) + 3 ;
       clear_screen () ;
-      set_drawing_color (color_BLACK) ;
+      set_drawing_color (color_RED) ;
       set_font (font_HELVETICA_18) ;
       draw_string (120, 290, "Le labyrinthe qui va etre construit sera un carre") ;
+      set_drawing_color (color_BLACK) ;
       set_font (font_HELVETICA_12) ;
 		  draw_printf (120, 250, "Le parametre n correspondant aux nombres de lignes/colonnes est %d", n) ;
 		  draw_printf (200, 210, "Pour continuer, appuyez sur une touche", n) ;
@@ -160,9 +168,10 @@ do
       get_key () ;
 
       clear_screen () ;
-      set_drawing_color (color_BLACK) ;
+      set_drawing_color (color_RED) ;
       set_font (font_HELVETICA_18) ;
       draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+      set_drawing_color (color_BLACK) ;
       set_font (font_HELVETICA_12) ;
       draw_string (120, 360, "1 : Voir la creation automatique") ;
       draw_string (120, 320, "2 : Passer directement au choix de sauvegarde") ;
@@ -183,18 +192,20 @@ do
       {
       // Taille du labyrinthe
       clear_screen () ;
-      set_drawing_color (color_BLACK) ;
+      set_drawing_color (color_RED) ;
       set_font (font_HELVETICA_18) ;
       draw_string (100, 290, "Le labyrinthe que vous allez construire sera un carre") ;
+      set_drawing_color (color_BLACK) ;
       set_font (font_HELVETICA_12) ;
       draw_string (120, 250, "Saisir le parametre n correspondant aux nombres de lignes/colonnes") ;
       update_graphics () ;
       n = get_key () - 48 ;
 
       clear_screen () ;
-      set_drawing_color (color_BLACK) ;
+      set_drawing_color (color_RED) ;
       set_font (font_HELVETICA_18) ;
       draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+      set_drawing_color (color_BLACK) ;
       set_font (font_HELVETICA_12) ;
       draw_string (120, 360, "1 : Voir la creation automatique") ;
       draw_string (120, 320, "2 : Passer directement au choix de sauvegarde") ;
@@ -220,9 +231,10 @@ do
 
     // Choix emplacement de chargement
     clear_screen () ;
-    set_drawing_color (color_BLACK) ;
+    set_drawing_color (color_RED) ;
     set_font (font_HELVETICA_18) ;
     draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 360, "1 : Chargement du labyrinthe dans 'Labyrinthe1.txt'") ;
     draw_string (120, 320, "2 : Chargement du labyrinthe dans 'Labyrinthe2.txt'") ;
@@ -262,9 +274,10 @@ do
 
 
     clear_screen () ;
-    set_drawing_color (color_BLACK) ;
+    set_drawing_color (color_RED) ;
     set_font (font_HELVETICA_18) ;
     draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_drawing_color (color_BLACK) ;
     set_font (font_HELVETICA_12) ;
     draw_string (120, 360, "1 : Jouer en voyant les limites du labyrinthe") ;
     draw_string (120, 320, "2 : Jouer en decouvrant les limites du labyrinthe") ;
@@ -281,9 +294,10 @@ do
       Creer_Curseur (&x, &y) ;
       Mouvement_Jeu_Limites_Visibles (&x, &y, &x2, &y2, n, MUR2, &Score) ;
   		Effacer_Score () ;
-  		set_drawing_color (color_BLACK) ;
   		set_font (font_HELVETICA_12) ;
+      set_drawing_color (color_RED) ;
   		draw_printf (530, 210, "Bravo !") ;
+  		set_drawing_color (color_BLACK) ;
  		  draw_printf (530, 170, "Score : %d", Score) ;
   		update_graphics () ;
       get_key () ;
@@ -299,9 +313,10 @@ do
       Creer_Curseur (&x, &y) ;
       Mouvement_Jeu_Limites_Invisibles (&x, &y, &x2, &y2, n, MUR2, &Score) ;
   		Effacer_Score () ;
-  		set_drawing_color (color_BLACK) ;
   		set_font (font_HELVETICA_12) ;
+      set_drawing_color (color_RED) ;
   		draw_printf (530, 210, "Bravo !") ;
+  		set_drawing_color (color_BLACK) ;
  		  draw_printf (530, 170, "Score : %d", Score) ;
   		update_graphics () ;
       get_key () ;
