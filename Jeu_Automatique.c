@@ -1,81 +1,118 @@
 #define MAX 100
-/*DONC FAUT faire selon les murs autours:
+/*il faut faire selon les murs autours:
 3 murs == impassse, donc on fait demitour et on scelle la case en, mettant un mur derriere nous
 2 murs on prends une direction au pif mais faut pas que ça soit en arrière
 1 mur parreil
 demitour = on prends le chemin inverse et on mets un mur pour bloquer l'accès a la case*/
 
-void Compter_Murs(int n, int MUR_Reso)
+int pos2x, pos2y ,curs2x ,curs2y ,nbmouv2 ;
+
+int Compter_Murs(int n, int MUR_Reso[MAX][MAX])
 //Renvoie le nombre de murs autour du curseur
 {
-  return MUR[posx][posx*2] + MUR[posx][2*posy +1] + MUR[posx +1][2*posy +1] +MUR[posx][2*posy+2];
+  return MUR_Reso[pos2x][pos2x*2] + MUR_Reso[pos2x][2*pos2y +1] + MUR_Reso[pos2x +1][2*pos2y +1] +MUR_Reso[pos2x][2*pos2y+2];
 }
 
+void Demi_Tour(int n, int MUR_Reso[MAX][MAX], int CHEMIN[MAX])
+//Permet a la fonction CreationLabyrinthe de revenir en dans la case précédente
+{
+  Effacer_Curseur(curs2x, curs2y);
+  if(CHEMIN[nbmouv2] == 1)
+    {
+      pos2y = pos2y +1;
+      curs2y = curs2y +60;
+      MUR_Reso[pos2x][2*pos2y] = 1;
+    }
+  if(CHEMIN[nbmouv2] == 2)
+    {
+      pos2x = pos2x +1;
+      curs2x = curs2x +60;
+      MUR_Reso[pos2x][2*pos2y +1] = 1;
+    }
+  if(CHEMIN[nbmouv2] == 3)
+    {
+      pos2x = pos2x -1;
+      curs2x = curs2x-60;
+      MUR_Reso[pos2x +1][2*pos2y+1] = 1;
+    }
+  if(CHEMIN[nbmouv2] == 4)
+    {
+      pos2y = pos2y -1;
+      curs2y = curs2y -60;
+      MUR_Reso[pos2x][2*pos2y+2] = 1;
+    }
+  Creer_Curseur(&curs2x, &curs2y);
+  update_graphics () ;
+  nbmouv2 = nbmouv2 -1;
+}
 
-void Resolution_Automatique(int n, int MUR_Reso)
+void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX])
 //Fonction Principale
 {
-  posx = 0; posy = n-1; cursx = 30; cursy = n-30; nbmouv = 0;
+   pos2x = 0; pos2y = n-1; curs2x = 30; curs2y = n-30; nbmouv2 = 0;
   int CHEMIN[MAX];
   int direction;
 
-  if(Compter_Murs(n, MUR_Reso)==3)
-    {Demi_Tour(n, MUR_Reso, CHEMIN);}
+  do{
 
-  if(Compter_Murs(n, MUR_Reso) !=3)
-  {
-    direction = rand()%4+1;
+    if(Compter_Murs(n, MUR_Reso)==3)
+      {Demi_Tour(n, MUR_Reso, CHEMIN);}
 
-    switch (direction) {
-      case 1:
-        if (CHEMIN[nbmouv] != 4 && MUR_Reso[posx][2*posy] == 0)
-        {
-          nbmouv++;
-          CHEMIN[nbmouv] = direction;
-          Effacer_Curseur(cursx, cursy);
-          posy = posy -1;
-          cursy = cursy -30;
-          Creer_Curseur(&cursx, &cursy);
-          break;
-        }
-        break;
-      case 2:
-        if (CHEMIN[nbmouv] != 3 && MUR_Reso[posx][2*posy+1] == 0)
-        {
-          nbmouv++;
-          CHEMIN[nbmouv] = direction;
-          Effacer_Curseur(cursx, cursy);
-          posx = posx -1;
-          cursx = cursx -30;
-          Creer_Curseur(&cursx, &cursy);
-          break;
-        }
-        break;
-      case 3:
-        if (CHEMIN[nbmouv] !=2 && MUR_Reso[posx+1][2*posy+1] == 0)
-        {
-          nbmouv++;
-          CHEMIN[nbmouv] = direction;
-          Effacer_Curseur(cursx, cursy);
-          posx = posx +1;
-          cursx = cursx +30;
-          Creer_Curseur(&cursx, &cursy);
-          break;
-        }
-        break;
-      case 4:
-        if (CHEMIN[nbmouv] !=1 && MUR_Reso[posx][2*posy+2] == 0)
-        {
-          nbmouv++;
-          CHEMIN[nbmouv] = direction;
-          Effacer_Curseur(cursx, cursy);
-          posy = posy +1;
-          cursy = cursy +30;
-          Creer_Curseur(&cursx, &cursy);
-          break;
-        }
+    if(Compter_Murs(n, MUR_Reso) !=3)
+    {
+      direction = rand()%4+1;
 
-    }
-  }
+      switch (direction) {
+        case 1:
+          if (CHEMIN[nbmouv2] != 4 && MUR_Reso[pos2x][2*pos2y] == 0)
+          {
+            nbmouv2++;
+            CHEMIN[nbmouv2] = direction;
+            Effacer_Curseur(curs2x, curs2y);
+            pos2y = pos2y -1;
+            curs2y = curs2y -30;
+            Creer_Curseur(&curs2x, &curs2y);
+            break;
+          }
+          break;
+        case 2:
+          if (CHEMIN[nbmouv2] != 3 && MUR_Reso[pos2x][2*pos2y+1] == 0)
+          {
+            nbmouv2++;
+            CHEMIN[nbmouv2] = direction;
+            Effacer_Curseur(curs2x, curs2y);
+            pos2x = pos2x -1;
+            curs2x = curs2x -30;
+            Creer_Curseur(&curs2x, &curs2y);
+            break;
+          }
+          break;
+        case 3:
+          if (CHEMIN[nbmouv2] !=2 && MUR_Reso[pos2x+1][2*pos2y+1] == 0)
+          {
+            nbmouv2++;
+            CHEMIN[nbmouv2] = direction;
+            Effacer_Curseur(curs2x, curs2y);
+            pos2x = pos2x +1;
+            curs2x = curs2x +30;
+            Creer_Curseur(&curs2x, &curs2y);
+            break;
+          }
+          break;
+        case 4:
+          if (CHEMIN[nbmouv2] !=1 && MUR_Reso[pos2x][2*pos2y+2] == 0)
+          {
+            nbmouv2++;
+            CHEMIN[nbmouv2] = direction;
+            Effacer_Curseur(curs2x, curs2y);
+            pos2y = pos2y +1;
+            curs2y = curs2y +30;
+            Creer_Curseur(&curs2x, &curs2y);
+            break;
+          }
+          break;
+        }
+        update_graphics () ;
+    } while(pos2x != n-1 && pos2y != 0);
 
 }

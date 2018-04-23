@@ -327,7 +327,14 @@ do
 
   if (Choix == 4)
     {
-    Boucle = 1 ;
+      f = fopen ("Labyrinthe3n.txt", "r") ;
+      Charger_n (f, &n) ;
+      fclose (f) ;
+      f = fopen("Labyrinthe3.txt", "r") ;
+      Charger_Labyrinthe (f, MUR2) ;
+      fclose (f) ;
+      Generer_Labyrinthe(n, MUR2);
+      Resolution_Automatique(n, MUR2);
     }
 
   if (Choix == 5)
