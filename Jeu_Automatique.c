@@ -55,7 +55,7 @@ void Demi_Tour(int n, int MUR_Reso[MAX][MAX], int CHEMIN[MAX])
   nbmouv2 = nbmouv2 -1;
 }
 
-void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX])
+void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX], int *Score)
 //Fonction Principale
 {
   pos2x = 0; pos2y = n-1; curs2x = 30; curs2y = (n * 60) - 30 ; nbmouv2 = 0;
@@ -119,16 +119,22 @@ void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX])
           }
           break;
         }
-        update_graphics () ;
+       *Score = *Score + 1 ;
     }
 
     else
       {Demi_Tour(n, MUR_Reso, CHEMIN) ;
+      *Score = *Score + 1 ;
       }
+
+		Effacer_Score () ;
+		set_drawing_color (color_BLACK) ;
+		set_font (font_HELVETICA_12) ;
+		draw_printf (530, 210, "Score : %d", *Score) ;
+    update_graphics () ;
 
     usleep(50000);
 
   } while((pos2x != (n - 1)) || (pos2y != 0));
 
-  get_key() ;
 }

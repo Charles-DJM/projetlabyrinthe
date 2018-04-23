@@ -373,8 +373,19 @@ do
 
       clear_screen();
       Case_Arrivee (n) ;
+      Score = 0 ;
       Generer_Labyrinthe(n, MUR2);
-      Resolution_Automatique(n, MUR2);
+      Resolution_Automatique(n, MUR2, &Score);
+  		Effacer_Score () ;
+  		set_font (font_HELVETICA_12) ;
+      set_drawing_color (color_RED) ;
+  		draw_printf (530, 210, "Bravo !") ;
+  		set_drawing_color (color_BLACK) ;
+ 		  draw_printf (530, 170, "Score : %d", Score) ;
+      update_graphics () ;
+      get_key () ;
+
+      Boucle = 1 ;
     }
 
   if (Choix == 5)
