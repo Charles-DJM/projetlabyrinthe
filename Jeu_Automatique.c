@@ -7,6 +7,14 @@ demitour = on prends le chemin inverse et on mets un mur pour bloquer l'accès a
 
 int pos2x, pos2y ,curs2x ,curs2y ,nbmouv2 ;
 
+void Effacer_Curseur2(int x, int y)
+{
+  set_drawing_color(color_WHITE);
+	draw_circle_full(x, y, 15);
+	update_graphics () ;
+	return ;
+}
+
 int Compter_Murs(int n, int MUR_Reso[MAX][MAX])
 //Renvoie le nombre de murs autour du curseur
 {
@@ -104,7 +112,7 @@ void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX])
           {
             nbmouv2++;
             CHEMIN[nbmouv2] = direction;
-            Effacer_Curseur(curs2x, curs2y);
+            Effacer_Curseur2(curs2x, curs2y);
             pos2y = pos2y +1;
             curs2y = curs2y +30;
             Creer_Curseur(&curs2x, &curs2y);
@@ -113,6 +121,7 @@ void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX])
           break;
         }
         update_graphics () ;
-    } while(pos2x != n-1 && pos2y != 0);
+    }
 
+  } while(pos2x != n-1 && pos2y != 0);
 }

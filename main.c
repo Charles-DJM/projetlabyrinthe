@@ -8,8 +8,8 @@
 #include "Creation_interactive.c"
 #include "Enregistrements.c"
 #include "Jeu_Interactif.c"
-#include "Jeu_Automatique.c"
 #include "Creation_Automatique.c"
+#include "Jeu_Automatique.c"
 
 #define MAX 100
 
