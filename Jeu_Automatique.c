@@ -22,23 +22,59 @@ void Resolution_Automatique(int n, int MUR_Reso)
   if(Compter_Murs(n, MUR_Reso)==3)
     {Demi_Tour(n, MUR_Reso, CHEMIN);}
 
-  if(Compter_Murs(n, MUR_Reso)==2)
+  if(Compter_Murs(n, MUR_Reso) !=3)
   {
     direction = rand()%4+1;
 
     switch (direction) {
       case 1:
-        if(CHEMIN[nbmouv] != 4 && MUR_Reso[posx][posy] == 0)
+        if (CHEMIN[nbmouv] != 4 && MUR_Reso[posx][2*posy] == 0)
         {
           nbmouv++;
           CHEMIN[nbmouv] = direction;
           Effacer_Curseur(cursx, cursy);
           posy = posy -1;
-          cursy = cursy -1;
+          cursy = cursy -30;
           Creer_Curseur(&cursx, &cursy);
           break;
         }
         break;
+      case 2:
+        if (CHEMIN[nbmouv] != 3 && MUR_Reso[posx][2*posy+1] == 0)
+        {
+          nbmouv++;
+          CHEMIN[nbmouv] = direction;
+          Effacer_Curseur(cursx, cursy);
+          posx = posx -1;
+          cursx = cursx -30;
+          Creer_Curseur(&cursx, &cursy);
+          break;
+        }
+        break;
+      case 3:
+        if (CHEMIN[nbmouv] !=2 && MUR_Reso[posx+1][2*posy+1] == 0)
+        {
+          nbmouv++;
+          CHEMIN[nbmouv] = direction;
+          Effacer_Curseur(cursx, cursy);
+          posx = posx +1;
+          cursx = cursx +30;
+          Creer_Curseur(&cursx, &cursy);
+          break;
+        }
+        break;
+      case 4:
+        if (CHEMIN[nbmouv] !=1 && MUR_Reso[posx][2*posy+2] == 0)
+        {
+          nbmouv++;
+          CHEMIN[nbmouv] = direction;
+          Effacer_Curseur(cursx, cursy);
+          posy = posy +1;
+          cursy = cursy +30;
+          Creer_Curseur(&cursx, &cursy);
+          break;
+        }
+
     }
   }
 
