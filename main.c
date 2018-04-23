@@ -333,6 +333,7 @@ do
       f = fopen("Labyrinthe3.txt", "r") ;
       Charger_Labyrinthe (f, MUR2) ;
       fclose (f) ;
+      clear_screen();
       Generer_Labyrinthe(n, MUR2);
       Resolution_Automatique(n, MUR2);
     }
