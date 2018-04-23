@@ -1,60 +1,45 @@
 #define MAX 100
+/*DONC FAUT faire selon les murs autours:
+3 murs == impassse, donc on fait demitour et on scelle la case en, mettant un mur derriere nous
+2 murs on prends une direction au pif mais faut pas que ça soit en arrière
+1 mur parreil
+demitour = on prends le chemin inverse et on mets un mur pour bloquer l'accès a la case*/
 
-int Compter_murs(int n, int MUR)
-//Compte le nombre de murs autour du curseur
+void Compter_Murs(int n, int MUR_Reso)
+//Renvoie le nombre de murs autour du curseur
 {
   return MUR[posx][posx*2] + MUR[posx][2*posy +1] + MUR[posx +1][2*posy +1] +MUR[posx][2*posy+2];
 }
 
-void Deplacement_Auto(int n, int MUR)
+
+void Resolution_Automatique(int n, int MUR_Reso)
+//Fonction Principale
 {
+  posx = 0; posy = n-1; cursx = 30; cursy = n-30; nbmouv = 0;
+  int CHEMIN[MAX];
+  int direction;
 
-  if(Compter_murs(n, MUR)>2)
+  if(Compter_Murs(n, MUR_Reso)==3)
+    {Demi_Tour(n, MUR_Reso, CHEMIN);}
+
+  if(Compter_Murs(n, MUR_Reso)==2)
   {
-   Demitour(CHEMIN);
-   return ;
+    direction = rand()%4+1;
+
+    switch (direction) {
+      case 1:
+        if(CHEMIN[nbmouv] != 4 && MUR_Reso[posx][posy] == 0)
+        {
+          nbmouv++;
+          CHEMIN[nbmouv] = direction;
+          Effacer_Curseur(cursx, cursy);
+          posy = posy -1;
+          cursy = cursy -1;
+          Creer_Curseur(&cursx, &cursy);
+          break;
+        }
+        break;
+    }
   }
 
-  int direct;
-  direct = rand()%4+1
-
-  if(direct==1 && posy-1>0 && CASE[posx][posy] == 0 && MUR[posx][posx*2])
-  {
-    posy = posy -1;
-    CASE[posx][posy] = 1;
-    nbmouv++;
-    CHEMIN[nbmouv] = direct;
-  }
-  if(direct==2 && posx-1>=0 && CASE[posx-1][posy] == 0 && MUR[posx][2*posy +1])
-  {
-    posx = posx -1;
-    CASE[posx][posy] = 1;
-    nbmouv++;
-    CHEMIN[nbmouv] = direct;
-  }
-  if(direct==3 && posx+1<n && CASE[posx+1][posy] == 0 && MUR[posx +1][2*posy +1])
-  {
-    posx = posx +1;
-    CASE[posx][posy] = 1;
-    nbmouv++;
-    CHEMIN[nbmouv] = 3;
-  }
-  if(direct==4 && posy+1<n && CASE[posx][posy+1] == 0 && MUR[posx][2*posy+2])
-  {
-    posy = posy +1;
-    CASE[posx][posy] = 1;
-    nbmouv++;
-    CHEMIN[nbmouv] = 4;
-  }
 }
-void Trouver_intersection(int n, int MUR_reso)
-{
-  while(Compter_murs(n, MUR_reso)>=3)
-  {
-
-  }
-}
-void Resolution_Automatique(int n, int MUR_reso)
-{
-    posx = 0; posy = n-1; cursx = 30; cursy = n-30; nbmouv = 0;
-    int i, j;
