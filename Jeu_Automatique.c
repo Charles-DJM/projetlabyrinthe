@@ -18,15 +18,13 @@ void Effacer_Curseur2(int x, int y)
 int Compter_Murs(int n, int MUR_Reso[MAX][MAX])
 //Renvoie le nombre de murs autour du curseur
 {
-  printf("comptermures %d\n", MUR_Reso[pos2x][pos2y*2] + MUR_Reso[pos2x][2*pos2y +1] + MUR_Reso[pos2x +1][2*pos2y +1] +MUR_Reso[pos2x][2*pos2y+2] );
-  return MUR_Reso[pos2x][pos2y*2] + MUR_Reso[pos2x][2*pos2y +1] + MUR_Reso[pos2x +1][2*pos2y +1] +MUR_Reso[pos2x][2*pos2y+2];
+  return MUR_Reso[pos2x][pos2y*2] + MUR_Reso[pos2x][2*pos2y +1] + MUR_Reso[pos2x +1][2*pos2y +1] + MUR_Reso[pos2x][2*pos2y+2] ;
 
 }
 
 void Demi_Tour(int n, int MUR_Reso[MAX][MAX], int CHEMIN[MAX])
 //Permet a la fonction CreationLabyrinthe de revenir en dans la case précédente
 {
-  printf("demitou\n" );
   Effacer_Curseur(curs2x, curs2y);
   if(CHEMIN[nbmouv2] == 1)
     {
@@ -60,47 +58,38 @@ void Demi_Tour(int n, int MUR_Reso[MAX][MAX], int CHEMIN[MAX])
 void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX])
 //Fonction Principale
 {
-   pos2x = 0; pos2y = n-1; curs2x = 30; curs2y = n-30; nbmouv2 = 0;
+  pos2x = 0; pos2y = n-1; curs2x = 30; curs2y = (n * 60) - 30 ; nbmouv2 = 0;
   int CHEMIN[MAX];
   int direction;
-  printf("creation curseur\n" );
-  get_key();
   Creer_Curseur(&curs2x, &curs2y);
   update_graphics();
-  get_key();
 
   do{
 
-    if(Compter_Murs(n, MUR_Reso)==3)
-      {Demi_Tour(n, MUR_Reso, CHEMIN);}
-
-    if(Compter_Murs(n, MUR_Reso) !=3)
+    if ( (Compter_Murs(n, MUR_Reso) !=3) || ((Compter_Murs (n, MUR_Reso) == 3) && (pos2x == 0 && pos2y == n - 1)) )
     {
       direction = rand()%4+1;
-      printf("%d direction\n",direction );
       switch (direction) {
         case 1:
-          printf("case1\n" );
           if (CHEMIN[nbmouv2] != 4 && MUR_Reso[pos2x][2*pos2y] == 0)
           {
-            printf("case1.1\n" );
             nbmouv2++;
             CHEMIN[nbmouv2] = direction;
             Effacer_Curseur(curs2x, curs2y);
             pos2y = pos2y -1;
-            curs2y = curs2y -30;
+            curs2y = curs2y -60;
             Creer_Curseur(&curs2x, &curs2y);
             break;
           }
           break;
-        case 2:printf("case2\n");
+        case 2:
           if (CHEMIN[nbmouv2] != 3 && MUR_Reso[pos2x][2*pos2y+1] == 0)
-          {printf("case2.2\n");
+          {
             nbmouv2++;
             CHEMIN[nbmouv2] = direction;
             Effacer_Curseur(curs2x, curs2y);
             pos2x = pos2x -1;
-            curs2x = curs2x -30;
+            curs2x = curs2x -60;
             Creer_Curseur(&curs2x, &curs2y);
             break;
           }
@@ -112,7 +101,7 @@ void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX])
             CHEMIN[nbmouv2] = direction;
             Effacer_Curseur(curs2x, curs2y);
             pos2x = pos2x +1;
-            curs2x = curs2x +30;
+            curs2x = curs2x +60;
             Creer_Curseur(&curs2x, &curs2y);
             break;
           }
@@ -124,7 +113,7 @@ void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX])
             CHEMIN[nbmouv2] = direction;
             Effacer_Curseur2(curs2x, curs2y);
             pos2y = pos2y +1;
-            curs2y = curs2y +30;
+            curs2y = curs2y +60;
             Creer_Curseur(&curs2x, &curs2y);
             break;
           }
@@ -132,7 +121,14 @@ void Resolution_Automatique(int n, int MUR_Reso[MAX][MAX])
         }
         update_graphics () ;
     }
-    get_key();
-  } while(pos2x != n-1 && pos2y != 0);
-  printf("fin\n" );
+
+    else
+      {Demi_Tour(n, MUR_Reso, CHEMIN) ;
+      }
+
+    usleep(50000);
+
+  } while((pos2x != (n - 1)) || (pos2y != 0));
+
+  get_key() ;
 }

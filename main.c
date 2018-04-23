@@ -14,7 +14,7 @@
 #define MAX 100
 
 int main (void)
-{int i, j, Score, Choix, Choix2, Choix3, Choix4, Choix5, Choix6, Boucle ;
+{int i, j, Score, Choix, Choix2, Choix3, Choix4, Choix5, Choix6, Choix8, Boucle ;
 int x, y, x2, y2, n ;
 FILE *f ;
 srand(time(0));
@@ -327,13 +327,52 @@ do
 
   if (Choix == 4)
     {
-      f = fopen ("Labyrinthe3n.txt", "r") ;
+
+    // Choix emplacement de chargement
+    clear_screen () ;
+    set_drawing_color (color_RED) ;
+    set_font (font_HELVETICA_18) ;
+    draw_string (100, 400, "Entrez le chiffre correspondant a votre choix :") ;
+    set_drawing_color (color_BLACK) ;
+    set_font (font_HELVETICA_12) ;
+    draw_string (120, 360, "1 : Chargement du labyrinthe dans 'Labyrinthe1.txt'") ;
+    draw_string (120, 320, "2 : Chargement du labyrinthe dans 'Labyrinthe2.txt'") ;
+    draw_string (120, 280, "3 : Chargement du labyrinthe dans 'Labyrinthe3.txt'") ;
+    update_graphics () ;
+    Choix8 = get_key () - 48 ;
+
+    if (Choix8 == 1)
+      // Charger 'Labyrinthe1.txt'
+      {f = fopen ("Labyrinthe1n.txt", "r") ;
+      Charger_n (f, &n) ;
+      fclose (f) ;
+      f = fopen("Labyrinthe1.txt", "r") ;
+      Charger_Labyrinthe (f, MUR2) ;
+      fclose (f) ;
+      }
+
+    if (Choix8 == 2)
+      // Charger 'Labyrinthe2.txt'
+      {f = fopen ("Labyrinthe2n.txt", "r") ;
+      Charger_n (f, &n) ;
+      fclose (f) ;
+      f = fopen("Labyrinthe2.txt", "r") ;
+      Charger_Labyrinthe (f, MUR2) ;
+      fclose (f) ;
+      }
+
+    if (Choix8 == 3)
+      // Charger 'Labyrinthe3.txt'
+      {f = fopen ("Labyrinthe3n.txt", "r") ;
       Charger_n (f, &n) ;
       fclose (f) ;
       f = fopen("Labyrinthe3.txt", "r") ;
       Charger_Labyrinthe (f, MUR2) ;
       fclose (f) ;
+      }
+
       clear_screen();
+      Case_Arrivee (n) ;
       Generer_Labyrinthe(n, MUR2);
       Resolution_Automatique(n, MUR2);
     }
